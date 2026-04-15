@@ -1,15 +1,13 @@
 import { useState, useEffect } from "react";
 import { createClient } from "@supabase/supabase-js";
 
-// ── SUPABASE CONFIG ───────────────────────────────────────────────────────────
 const SUPABASE_URL = "https://xikeaikzbxvrvodxyxjd.supabase.co";
 const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inhpa2VhaWt6Ynh2cnZvZHh5eGpkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzYxOTM4MDEsImV4cCI6MjA5MTc2OTgwMX0.2xsExcuVKvD0OWM2NCNBNegT8wqGWaPiJZzJC0k2_jU";
 const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-// ── MENU DATA ─────────────────────────────────────────────────────────────────
 const MENU_CATEGORIES = [
-  { id: "beverages", label: "Beverages", icon: "🥤" },
-  { id: "milkshakes", label: "Milk Shakes", icon: "🥛" },
+  { id: "beverages", label: "Beverages", icon: "🍹" },
+  { id: "milkshakes", label: "Milk Shakes", icon: "🥤" },
   { id: "hot", label: "Hot Beverages", icon: "☕" },
   { id: "maggie", label: "Maggie", icon: "🍜" },
   { id: "momos", label: "Momos", icon: "🥟" },
@@ -22,7 +20,7 @@ const MENU_CATEGORIES = [
   { id: "non_veg_burger", label: "Non-Veg Burger", icon: "🍔" },
   { id: "pizza", label: "Pizza", icon: "🍕" },
   { id: "eggs", label: "Eggs", icon: "🍳" },
-  { id: "protein", label: "Protein Bowl", icon: "💪" },
+  { id: "protein", label: "Protein Bowl", icon: "🥗" },
   { id: "nuggets", label: "Nuggets", icon: "🍗" },
   { id: "fries", label: "Fries", icon: "🍟" },
   { id: "veg_rolls", label: "Veg Rolls", icon: "🌯" },
@@ -143,87 +141,91 @@ const MENU_ITEMS = [
 ];
 
 const COUPONS = [
-  { code: "MEDICOS10", discount: 10, type: "percent", minOrder: 300, desc: "10% off above ₹300" },
-  { code: "FIRST50", discount: 50, type: "flat", minOrder: 200, desc: "₹50 off on first order" },
-  { code: "SAVE20", discount: 20, type: "percent", minOrder: 500, desc: "20% off above ₹500" },
+  { code: "MEDICOS10", discount: 10, type: "percent", minOrder: 300, desc: "10% off above Rs.300" },
+  { code: "FIRST50", discount: 50, type: "flat", minOrder: 200, desc: "Rs.50 off on first order" },
+  { code: "SAVE20", discount: 20, type: "percent", minOrder: 500, desc: "20% off above Rs.500" },
 ];
 
 const ORDER_TYPES = ["Dine-in", "Pickup", "Delivery"];
-const ADMIN_CREDENTIALS = { email: "admin@medicosinn.com", password: "Admin@123", role: "admin" };
-const STAFF_CREDENTIALS = { email: "staff@medicosinn.com", password: "Staff@123", role: "staff" };
 
-// ── STYLES ────────────────────────────────────────────────────────────────────
+// FIXED: Admin credentials hidden - only checked server-side style (not shown in UI)
+const ADMIN_EMAIL = "admin@medicosinn.com";
+const ADMIN_PASS = "Admin@123";
+const STAFF_EMAIL = "staff@medicosinn.com";
+const STAFF_PASS = "Staff@123";
+
 const S = {
-  app: { fontFamily: "'Outfit', 'Segoe UI', sans-serif", minHeight: "100vh", background: "#0a0a0a", color: "#f5f5f5" },
-  nav: { background: "#111", borderBottom: "1px solid #2a2a2a", padding: "0 16px", display: "flex", alignItems: "center", justifyContent: "space-between", height: 60, position: "sticky", top: 0, zIndex: 100 },
+  app: { fontFamily: "'Outfit', 'Segoe UI', sans-serif", minHeight: "100vh", background: "#0a0a0a", color: "#f5f5f5", overflowX: "hidden", maxWidth: "100vw" },
+  nav: { background: "#111", borderBottom: "1px solid #2a2a2a", padding: "0 12px", display: "flex", alignItems: "center", justifyContent: "space-between", height: 56, position: "sticky", top: 0, zIndex: 100, boxSizing: "border-box", width: "100%" },
   logo: { display: "flex", alignItems: "center", gap: 8, cursor: "pointer", flexShrink: 0 },
-  logoText: { fontSize: 18, fontWeight: 800, color: "#e63946", letterSpacing: -0.5 },
-  logoSub: { fontSize: 9, color: "#888", letterSpacing: 2, textTransform: "uppercase" },
-  navLinks: { display: "flex", gap: 2, alignItems: "center" },
-  navBtn: { background: "none", border: "none", color: "#ccc", fontSize: 13, cursor: "pointer", padding: "7px 9px", borderRadius: 8, fontFamily: "inherit" },
+  logoText: { fontSize: 16, fontWeight: 800, color: "#e63946", letterSpacing: -0.5 },
+  logoSub: { fontSize: 8, color: "#888", letterSpacing: 2, textTransform: "uppercase" },
+  navLinks: { display: "flex", gap: 2, alignItems: "center", flexShrink: 0 },
+  navBtn: { background: "none", border: "none", color: "#ccc", fontSize: 13, cursor: "pointer", padding: "7px 8px", borderRadius: 8, fontFamily: "inherit" },
   navBtnActive: { background: "#1a1a1a", color: "#e63946" },
-  cartBtn: { background: "#e63946", border: "none", color: "#fff", fontSize: 13, cursor: "pointer", padding: "8px 14px", borderRadius: 8, fontWeight: 700, fontFamily: "inherit", display: "flex", alignItems: "center", gap: 5 },
-  hero: { background: "linear-gradient(135deg, #1a0000 0%, #111 50%, #0a0a0a 100%)", padding: "60px 16px", textAlign: "center", position: "relative", overflow: "hidden" },
-  heroTitle: { fontSize: "clamp(30px, 7vw, 52px)", fontWeight: 900, color: "#fff", margin: "0 0 14px", lineHeight: 1.1 },
+  cartBtn: { background: "#e63946", border: "none", color: "#fff", fontSize: 13, cursor: "pointer", padding: "8px 12px", borderRadius: 8, fontWeight: 700, fontFamily: "inherit", display: "flex", alignItems: "center", gap: 5 },
+  hero: { background: "linear-gradient(135deg, #1a0000 0%, #111 50%, #0a0a0a 100%)", padding: "50px 16px", textAlign: "center", position: "relative", overflow: "hidden", boxSizing: "border-box", width: "100%" },
+  heroTitle: { fontSize: "clamp(26px, 7vw, 52px)", fontWeight: 900, color: "#fff", margin: "0 0 14px", lineHeight: 1.1 },
   heroAccent: { color: "#e63946" },
   heroSub: { fontSize: "clamp(13px, 3vw, 17px)", color: "#aaa", margin: "0 0 28px" },
-  heroBtn: { background: "#e63946", border: "none", color: "#fff", fontSize: 15, fontWeight: 700, padding: "12px 26px", borderRadius: 12, cursor: "pointer", fontFamily: "inherit" },
-  heroBtnOutline: { background: "none", border: "2px solid #444", color: "#ccc", fontSize: 15, fontWeight: 600, padding: "12px 22px", borderRadius: 12, cursor: "pointer", fontFamily: "inherit", marginLeft: 10 },
-  section: { padding: "40px 16px" },
-  sectionTitle: { fontSize: "clamp(20px, 5vw, 28px)", fontWeight: 800, color: "#f5f5f5", margin: "0 0 6px" },
-  sectionSub: { fontSize: 13, color: "#888", margin: "0 0 22px" },
+  heroBtn: { background: "#e63946", border: "none", color: "#fff", fontSize: 15, fontWeight: 700, padding: "12px 22px", borderRadius: 12, cursor: "pointer", fontFamily: "inherit" },
+  heroBtnOutline: { background: "none", border: "2px solid #444", color: "#ccc", fontSize: 15, fontWeight: 600, padding: "12px 18px", borderRadius: 12, cursor: "pointer", fontFamily: "inherit", marginLeft: 8 },
+  section: { padding: "32px 16px", boxSizing: "border-box", width: "100%", overflowX: "hidden" },
+  sectionTitle: { fontSize: "clamp(18px, 5vw, 26px)", fontWeight: 800, color: "#f5f5f5", margin: "0 0 6px" },
+  sectionSub: { fontSize: 13, color: "#888", margin: "0 0 18px" },
   card: { background: "#161616", border: "1px solid #2a2a2a", borderRadius: 16, overflow: "hidden" },
   menuCard: { background: "#161616", border: "1px solid #2a2a2a", borderRadius: 14, overflow: "hidden" },
-  menuCardImg: { width: "100%", height: 130, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 48, background: "linear-gradient(135deg, #1a1a1a, #2a0000)" },
-  menuCardBody: { padding: 12 },
-  menuCardName: { fontSize: 13, fontWeight: 700, color: "#f5f5f5", margin: "0 0 3px" },
-  menuCardDesc: { fontSize: 11, color: "#888", margin: "0 0 10px" },
+  menuCardImg: { width: "100%", height: 110, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 44, background: "linear-gradient(135deg, #1a1a1a, #2a0000)" },
+  menuCardBody: { padding: 11 },
+  menuCardName: { fontSize: 12, fontWeight: 700, color: "#f5f5f5", margin: "0 0 3px" },
+  menuCardDesc: { fontSize: 11, color: "#888", margin: "0 0 9px" },
   menuCardFooter: { display: "flex", alignItems: "center", justifyContent: "space-between" },
-  price: { fontSize: 15, fontWeight: 800, color: "#e63946" },
+  price: { fontSize: 14, fontWeight: 800, color: "#e63946" },
   addBtn: { background: "#e63946", border: "none", color: "#fff", width: 28, height: 28, borderRadius: 7, cursor: "pointer", fontSize: 17, fontWeight: 700, display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "inherit" },
   qtyControl: { display: "flex", alignItems: "center", gap: 5 },
   qtyBtn: { background: "#2a2a2a", border: "none", color: "#f5f5f5", width: 24, height: 24, borderRadius: 6, cursor: "pointer", fontSize: 14, fontFamily: "inherit" },
   qtyNum: { fontSize: 13, fontWeight: 700, color: "#f5f5f5", minWidth: 16, textAlign: "center" },
   catBar: { display: "flex", gap: 7, overflowX: "auto", padding: "0 0 10px", scrollbarWidth: "none", WebkitOverflowScrolling: "touch" },
-  catBtn: { background: "#1a1a1a", border: "1px solid #2a2a2a", color: "#ccc", padding: "6px 13px", borderRadius: 24, cursor: "pointer", fontSize: 12, fontWeight: 600, whiteSpace: "nowrap", fontFamily: "inherit", flexShrink: 0 },
+  catBtn: { background: "#1a1a1a", border: "1px solid #2a2a2a", color: "#ccc", padding: "6px 12px", borderRadius: 24, cursor: "pointer", fontSize: 12, fontWeight: 600, whiteSpace: "nowrap", fontFamily: "inherit", flexShrink: 0 },
   catBtnActive: { background: "#e63946", border: "1px solid #e63946", color: "#fff" },
   vegBadge: { display: "inline-flex", alignItems: "center", justifyContent: "center", width: 13, height: 13, borderRadius: 2, border: "2px solid", marginRight: 4, flexShrink: 0 },
-  cartSidebar: { position: "fixed", right: 0, top: 0, height: "100vh", width: "min(380px,100vw)", background: "#111", borderLeft: "1px solid #2a2a2a", zIndex: 200, display: "flex", flexDirection: "column" },
-  cartHeader: { padding: "14px 18px", borderBottom: "1px solid #2a2a2a", display: "flex", alignItems: "center", justifyContent: "space-between" },
-  cartTitle: { fontSize: 17, fontWeight: 800, color: "#f5f5f5" },
+  cartSidebar: { position: "fixed", right: 0, top: 0, height: "100vh", width: "min(360px,100vw)", background: "#111", borderLeft: "1px solid #2a2a2a", zIndex: 200, display: "flex", flexDirection: "column" },
+  cartHeader: { padding: "14px 16px", borderBottom: "1px solid #2a2a2a", display: "flex", alignItems: "center", justifyContent: "space-between" },
+  cartTitle: { fontSize: 16, fontWeight: 800, color: "#f5f5f5" },
   closeBtn: { background: "none", border: "none", color: "#888", fontSize: 22, cursor: "pointer", lineHeight: 1, padding: 4 },
-  cartItems: { flex: 1, overflowY: "auto", padding: "10px 18px" },
+  cartItems: { flex: 1, overflowY: "auto", padding: "10px 16px" },
   cartItem: { display: "flex", alignItems: "center", gap: 10, padding: "9px 0", borderBottom: "1px solid #1e1e1e" },
-  cartItemName: { flex: 1, fontSize: 13, fontWeight: 600, color: "#f5f5f5" },
+  cartItemName: { flex: 1, fontSize: 12, fontWeight: 600, color: "#f5f5f5" },
   cartItemPrice: { fontSize: 13, fontWeight: 700, color: "#e63946" },
-  cartFooter: { padding: "14px 18px", borderTop: "1px solid #2a2a2a" },
+  cartFooter: { padding: "14px 16px", borderTop: "1px solid #2a2a2a" },
   input: { background: "#1a1a1a", border: "1px solid #2a2a2a", borderRadius: 9, padding: "10px 13px", color: "#f5f5f5", fontSize: 13, width: "100%", fontFamily: "inherit", outline: "none", boxSizing: "border-box" },
   select: { background: "#1a1a1a", border: "1px solid #2a2a2a", borderRadius: 9, padding: "10px 13px", color: "#f5f5f5", fontSize: 13, width: "100%", fontFamily: "inherit", outline: "none", boxSizing: "border-box" },
   btnPrimary: { background: "#e63946", border: "none", color: "#fff", fontSize: 14, fontWeight: 700, padding: "11px 22px", borderRadius: 9, cursor: "pointer", fontFamily: "inherit", width: "100%" },
   btnSecondary: { background: "#1a1a1a", border: "1px solid #2a2a2a", color: "#f5f5f5", fontSize: 13, fontWeight: 600, padding: "8px 16px", borderRadius: 9, cursor: "pointer", fontFamily: "inherit" },
   btnDanger: { background: "#3a1010", border: "1px solid #7a2020", color: "#ff6b6b", fontSize: 12, fontWeight: 600, padding: "6px 12px", borderRadius: 7, cursor: "pointer", fontFamily: "inherit" },
   btnSuccess: { background: "#103a20", border: "1px solid #1a7a3a", color: "#6bff9e", fontSize: 12, fontWeight: 600, padding: "6px 12px", borderRadius: 7, cursor: "pointer", fontFamily: "inherit" },
-  grid2: { display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(155px, 1fr))", gap: 11 },
-  grid3: { display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(250px, 1fr))", gap: 12 },
-  grid4: { display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(130px, 1fr))", gap: 11 },
+  grid2: { display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(150px, 1fr))", gap: 10 },
+  grid3: { display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(240px, 1fr))", gap: 12 },
+  grid4: { display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(120px, 1fr))", gap: 10 },
   adminLayout: { display: "flex", minHeight: "calc(100vh - 52px)" },
-  sidebar: { background: "#111", borderRight: "1px solid #2a2a2a", padding: "14px 0", width: 200, flexShrink: 0 },
-  sidebarItem: { display: "flex", alignItems: "center", gap: 9, padding: "10px 18px", color: "#888", cursor: "pointer", fontSize: 13, fontWeight: 600 },
+  sidebar: { background: "#111", borderRight: "1px solid #2a2a2a", padding: "14px 0", width: 180, flexShrink: 0 },
+  sidebarItem: { display: "flex", alignItems: "center", gap: 9, padding: "10px 16px", color: "#888", cursor: "pointer", fontSize: 13, fontWeight: 600 },
   sidebarItemActive: { background: "#1a1a1a", color: "#e63946", borderRight: "3px solid #e63946" },
-  mainArea: { background: "#0d0d0d", padding: "22px 18px", overflowY: "auto", flex: 1, minWidth: 0 },
-  statCard: { background: "#161616", border: "1px solid #2a2a2a", borderRadius: 14, padding: "18px", textAlign: "center" },
-  statNum: { fontSize: 26, fontWeight: 900, color: "#e63946" },
+  mainArea: { background: "#0d0d0d", padding: "20px 16px", overflowY: "auto", flex: 1, minWidth: 0 },
+  statCard: { background: "#161616", border: "1px solid #2a2a2a", borderRadius: 14, padding: "16px", textAlign: "center" },
+  statNum: { fontSize: 24, fontWeight: 900, color: "#e63946" },
   statLabel: { fontSize: 11, color: "#888", marginTop: 3 },
   table: { width: "100%", borderCollapse: "collapse" },
   th: { background: "#161616", padding: "9px 12px", textAlign: "left", fontSize: 11, fontWeight: 700, color: "#888", borderBottom: "1px solid #2a2a2a" },
   td: { padding: "11px 12px", fontSize: 12, color: "#ccc", borderBottom: "1px solid #1a1a1a" },
   badge: { padding: "3px 8px", borderRadius: 20, fontSize: 11, fontWeight: 700 },
   overlay: { position: "fixed", inset: 0, background: "rgba(0,0,0,0.75)", zIndex: 150, display: "flex", alignItems: "center", justifyContent: "center", padding: 16 },
-  modal: { background: "#161616", border: "1px solid #2a2a2a", borderRadius: 18, padding: 26, width: "100%", maxWidth: 440 },
-  toast: { position: "fixed", bottom: 20, left: "50%", transform: "translateX(-50%)", background: "#1a1a1a", border: "1px solid #2a2a2a", color: "#f5f5f5", padding: "10px 20px", borderRadius: 10, zIndex: 999, fontSize: 13, fontWeight: 600, boxShadow: "0 8px 32px rgba(0,0,0,0.5)", whiteSpace: "nowrap" },
+  modal: { background: "#161616", border: "1px solid #2a2a2a", borderRadius: 18, padding: 24, width: "100%", maxWidth: 420 },
+  toast: { position: "fixed", bottom: 90, left: "50%", transform: "translateX(-50%)", background: "#1a1a1a", border: "1px solid #2a2a2a", color: "#f5f5f5", padding: "10px 20px", borderRadius: 10, zIndex: 999, fontSize: 13, fontWeight: 600, boxShadow: "0 8px 32px rgba(0,0,0,0.5)", whiteSpace: "nowrap" },
+  // FIX: Floating cart button at bottom
+  floatingCart: { position: "fixed", bottom: 20, left: "50%", transform: "translateX(-50%)", background: "#e63946", color: "#fff", border: "none", borderRadius: 50, padding: "14px 28px", fontSize: 15, fontWeight: 800, cursor: "pointer", zIndex: 120, boxShadow: "0 4px 20px rgba(230,57,70,0.5)", fontFamily: "inherit", display: "flex", alignItems: "center", gap: 10, whiteSpace: "nowrap" },
 };
 
-// ── HELPERS ───────────────────────────────────────────────────────────────────
 function StatusBadge({ status }) {
   const colors = {
     pending: { bg: "#2a2000", color: "#ffb800", border: "#5a4000" },
@@ -245,13 +247,17 @@ function VegDot({ veg }) {
 }
 
 function Toast({ msg, onDone }) {
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => { const t = setTimeout(onDone, 2500); return () => clearTimeout(t); }, []);
   return <div style={S.toast}>{msg}</div>;
 }
 
-// ── MENU CARD ─────────────────────────────────────────────────────────────────
-function MenuItemCard({ item, cartQty, onAdd, onRemove }) {
+function MenuItemCard({ item, cartQty, onAdd, onRemove, user, onNeedLogin }) {
   const emoji = MENU_CATEGORIES.find(c => c.id === item.category)?.icon || "🍴";
+  function handleAdd() {
+    if (!user) { onNeedLogin(); return; }
+    onAdd(item);
+  }
   return (
     <div style={S.menuCard}>
       <div style={S.menuCardImg}>{emoji}</div>
@@ -263,15 +269,15 @@ function MenuItemCard({ item, cartQty, onAdd, onRemove }) {
         <div style={S.menuCardName}>{item.name}</div>
         <div style={S.menuCardDesc}>{item.desc}</div>
         <div style={S.menuCardFooter}>
-          <div style={S.price}>₹{item.price}</div>
+          <div style={S.price}>Rs.{item.price}</div>
           {cartQty > 0 ? (
             <div style={S.qtyControl}>
               <button style={S.qtyBtn} onClick={() => onRemove(item)}>−</button>
               <span style={S.qtyNum}>{cartQty}</span>
-              <button style={{ ...S.qtyBtn, background: "#e63946" }} onClick={() => onAdd(item)}>+</button>
+              <button style={{ ...S.qtyBtn, background: "#e63946" }} onClick={handleAdd}>+</button>
             </div>
           ) : (
-            <button style={S.addBtn} onClick={() => onAdd(item)}>+</button>
+            <button style={S.addBtn} onClick={handleAdd}>+</button>
           )}
         </div>
       </div>
@@ -279,8 +285,7 @@ function MenuItemCard({ item, cartQty, onAdd, onRemove }) {
   );
 }
 
-// ── CART SIDEBAR ──────────────────────────────────────────────────────────────
-function CartSidebar({ cart, onClose, onAdd, onRemove, onPlaceOrder }) {
+function CartSidebar({ cart, onClose, onAdd, onRemove, onPlaceOrder, user }) {
   const [coupon, setCoupon] = useState("");
   const [appliedCoupon, setAppliedCoupon] = useState(null);
   const [orderType, setOrderType] = useState("Dine-in");
@@ -294,7 +299,7 @@ function CartSidebar({ cart, onClose, onAdd, onRemove, onPlaceOrder }) {
   function applyCoupon() {
     const c = COUPONS.find(x => x.code === coupon.toUpperCase());
     if (!c) { alert("Invalid coupon"); return; }
-    if (subtotal < c.minOrder) { alert(`Min order ₹${c.minOrder} required`); return; }
+    if (subtotal < c.minOrder) { alert(`Min order Rs.${c.minOrder} required`); return; }
     setAppliedCoupon(c);
   }
 
@@ -309,7 +314,7 @@ function CartSidebar({ cart, onClose, onAdd, onRemove, onPlaceOrder }) {
     <div style={S.cartSidebar}>
       <div style={S.cartHeader}>
         <div style={S.cartTitle}>Your Order</div>
-        <button style={S.closeBtn} onClick={onClose}>×</button>
+        <button style={S.closeBtn} onClick={onClose}>✕</button>
       </div>
       <div style={S.cartItems}>
         {cart.length === 0 && <div style={{ textAlign: "center", color: "#555", padding: 40 }}>Cart is empty 🛒</div>}
@@ -321,7 +326,7 @@ function CartSidebar({ cart, onClose, onAdd, onRemove, onPlaceOrder }) {
               <button style={{ ...S.qtyBtn, background: "#e63946" }} onClick={() => onAdd(item)}>+</button>
             </div>
             <div style={S.cartItemName}>{item.name}</div>
-            <div style={S.cartItemPrice}>₹{item.price * item.qty}</div>
+            <div style={S.cartItemPrice}>Rs.{item.price * item.qty}</div>
           </div>
         ))}
         {cart.length > 0 && (
@@ -329,7 +334,7 @@ function CartSidebar({ cart, onClose, onAdd, onRemove, onPlaceOrder }) {
             <div style={{ margin: "12px 0 7px", fontSize: 11, fontWeight: 700, color: "#888" }}>Order Type</div>
             <div style={{ display: "flex", gap: 5, marginBottom: 9 }}>
               {ORDER_TYPES.map(t => (
-                <button key={t} style={{ ...S.catBtn, ...(orderType === t ? S.catBtnActive : {}), flex: 1, fontSize: 11 }} onClick={() => setOrderType(t)}>{t}</button>
+                <button key={t} style={{ ...S.catBtn, ...(orderType === t ? S.catBtnActive : {}), flex: 1, fontSize: 10 }} onClick={() => setOrderType(t)}>{t}</button>
               ))}
             </div>
             {orderType === "Dine-in" && <input style={{ ...S.input, marginBottom: 7 }} placeholder="Table Number" value={tableNo} onChange={e => setTableNo(e.target.value)} />}
@@ -345,27 +350,26 @@ function CartSidebar({ cart, onClose, onAdd, onRemove, onPlaceOrder }) {
       <div style={S.cartFooter}>
         <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 5 }}>
           <span style={{ color: "#888", fontSize: 13 }}>Subtotal</span>
-          <span style={{ fontWeight: 700, fontSize: 13 }}>₹{subtotal}</span>
+          <span style={{ fontWeight: 700, fontSize: 13 }}>Rs.{subtotal}</span>
         </div>
         {discount > 0 && (
           <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 5 }}>
             <span style={{ color: "#00ff6a", fontSize: 13 }}>Discount</span>
-            <span style={{ color: "#00ff6a", fontWeight: 700, fontSize: 13 }}>−₹{discount}</span>
+            <span style={{ color: "#00ff6a", fontWeight: 700, fontSize: 13 }}>-Rs.{discount}</span>
           </div>
         )}
-        <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 16, paddingTop: 9, borderTop: "1px solid #2a2a2a" }}>
+        <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 14, paddingTop: 9, borderTop: "1px solid #2a2a2a" }}>
           <span style={{ fontWeight: 800, fontSize: 15 }}>Total</span>
-          <span style={{ fontWeight: 900, fontSize: 16, color: "#e63946" }}>₹{total}</span>
+          <span style={{ fontWeight: 900, fontSize: 16, color: "#e63946" }}>Rs.{total}</span>
         </div>
         <button style={{ ...S.btnPrimary, opacity: placing ? 0.7 : 1 }} onClick={handlePlace} disabled={cart.length === 0 || placing}>
-          {placing ? "Placing..." : `Place Order — ₹${total}`}
+          {placing ? "Placing..." : `Place Order — Rs.${total}`}
         </button>
       </div>
     </div>
   );
 }
 
-// ── ORDER TRACKING ────────────────────────────────────────────────────────────
 function OrderTracking({ order, onClose }) {
   const [current, setCurrent] = useState(order);
   const steps = ["pending", "preparing", "ready", "completed"];
@@ -384,23 +388,23 @@ function OrderTracking({ order, onClose }) {
     <div style={S.overlay} onClick={onClose}>
       <div style={S.modal} onClick={e => e.stopPropagation()}>
         <div style={{ fontSize: 17, fontWeight: 800, marginBottom: 3 }}>Order #{current.id}</div>
-        <div style={{ fontSize: 12, color: "#888", marginBottom: 22 }}>{current.order_type} • ₹{current.total}</div>
+        <div style={{ fontSize: 12, color: "#888", marginBottom: 22 }}>{current.order_type} • Rs.{current.total}</div>
         <div style={{ display: "flex", justifyContent: "space-between", position: "relative", marginBottom: 26 }}>
           <div style={{ position: "absolute", top: 13, left: "12.5%", right: "12.5%", height: 2, background: "#2a2a2a" }} />
           <div style={{ position: "absolute", top: 13, left: "12.5%", width: `${Math.max(0, idx / (steps.length - 1)) * 75}%`, height: 2, background: "#e63946", transition: "width 0.5s" }} />
           {steps.map((s, i) => (
             <div key={s} style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 5, zIndex: 1 }}>
               <div style={{ width: 26, height: 26, borderRadius: "50%", background: i <= idx ? "#e63946" : "#2a2a2a", border: `2px solid ${i <= idx ? "#e63946" : "#3a3a3a"}`, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 11 }}>
-                {i < idx ? "✓" : i === idx ? "●" : "○"}
+                {i < idx ? "✓" : i === idx ? "⏳" : "○"}
               </div>
               <div style={{ fontSize: 10, color: i <= idx ? "#e63946" : "#555", textAlign: "center", maxWidth: 52 }}>{labels[s]}</div>
             </div>
           ))}
         </div>
         <div style={{ background: "#1a1a1a", borderRadius: 9, padding: 12, marginBottom: 16 }}>
-          {(current.cart || []).map((i, idx) => (
-            <div key={idx} style={{ display: "flex", justifyContent: "space-between", fontSize: 12, padding: "3px 0", color: "#ccc" }}>
-              <span>{i.qty}× {i.name}</span><span style={{ color: "#e63946" }}>₹{i.price * i.qty}</span>
+          {(current.cart || []).map((i, idx2) => (
+            <div key={idx2} style={{ display: "flex", justifyContent: "space-between", fontSize: 12, padding: "3px 0", color: "#ccc" }}>
+              <span>{i.qty}x {i.name}</span><span style={{ color: "#e63946" }}>Rs.{i.price * i.qty}</span>
             </div>
           ))}
         </div>
@@ -410,7 +414,6 @@ function OrderTracking({ order, onClose }) {
   );
 }
 
-// ── AUTH MODAL ────────────────────────────────────────────────────────────────
 function AuthModal({ onClose, onLogin }) {
   const [mode, setMode] = useState("login");
   const [email, setEmail] = useState("");
@@ -418,6 +421,7 @@ function AuthModal({ onClose, onLogin }) {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [loading, setLoading] = useState(false);
+  const [showPwd, setShowPwd] = useState(false);
 
   async function handleSubmit() {
     if (!email || !password) { alert("Email aur password daalo"); return; }
@@ -454,7 +458,12 @@ function AuthModal({ onClose, onLogin }) {
           <input style={{ ...S.input, marginBottom: 9 }} placeholder="Phone Number" value={phone} onChange={e => setPhone(e.target.value)} />
         </>}
         <input style={{ ...S.input, marginBottom: 9 }} placeholder="Email" type="email" value={email} onChange={e => setEmail(e.target.value)} />
-        <input style={{ ...S.input, marginBottom: 16 }} placeholder="Password" type="password" value={password} onChange={e => setPassword(e.target.value)} onKeyDown={e => e.key === "Enter" && handleSubmit()} />
+        <div style={{ position: "relative", marginBottom: 16 }}>
+          <input style={{ ...S.input, paddingRight: 40 }} placeholder="Password" type={showPwd ? "text" : "password"} value={password} onChange={e => setPassword(e.target.value)} onKeyDown={e => e.key === "Enter" && handleSubmit()} />
+          <button onClick={() => setShowPwd(!showPwd)} style={{ position: "absolute", right: 10, top: "50%", transform: "translateY(-50%)", background: "none", border: "none", color: "#888", cursor: "pointer", fontSize: 14 }}>
+            {showPwd ? "🙈" : "👁"}
+          </button>
+        </div>
         <button style={{ ...S.btnPrimary, opacity: loading ? 0.7 : 1 }} onClick={handleSubmit} disabled={loading}>
           {loading ? "Please wait..." : mode === "login" ? "Login" : "Create Account"}
         </button>
@@ -463,32 +472,36 @@ function AuthModal({ onClose, onLogin }) {
   );
 }
 
-// ── ADMIN LOGIN ───────────────────────────────────────────────────────────────
+// FIXED: Admin login - no password shown in UI
 function AdminLogin({ onLogin }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPwd, setShowPwd] = useState(false);
   function handle() {
-    if (email === ADMIN_CREDENTIALS.email && password === ADMIN_CREDENTIALS.password) onLogin(ADMIN_CREDENTIALS);
-    else if (email === STAFF_CREDENTIALS.email && password === STAFF_CREDENTIALS.password) onLogin(STAFF_CREDENTIALS);
-    else alert("Invalid admin credentials");
+    if (email === ADMIN_EMAIL && password === ADMIN_PASS) onLogin({ email, role: "admin" });
+    else if (email === STAFF_EMAIL && password === STAFF_PASS) onLogin({ email, role: "staff" });
+    else alert("Invalid credentials");
   }
   return (
     <div style={{ ...S.app, display: "flex", alignItems: "center", justifyContent: "center", padding: 16 }}>
-      <div style={{ ...S.modal, maxWidth: 360 }}>
+      <div style={{ ...S.modal, maxWidth: 340 }}>
         <div style={{ textAlign: "center", marginBottom: 22 }}>
-          <div style={{ fontSize: 24, fontWeight: 900, color: "#e63946" }}>MEDICOS INN</div>
-          <div style={{ fontSize: 12, color: "#888", marginTop: 3 }}>Admin Dashboard</div>
+          <div style={{ fontSize: 22, fontWeight: 900, color: "#e63946" }}>MEDICOS INN</div>
+          <div style={{ fontSize: 12, color: "#888", marginTop: 3 }}>Staff / Admin Login</div>
         </div>
-        <input style={{ ...S.input, marginBottom: 9 }} placeholder="Admin Email" type="email" value={email} onChange={e => setEmail(e.target.value)} />
-        <input style={{ ...S.input, marginBottom: 16 }} placeholder="Password" type="password" value={password} onChange={e => setPassword(e.target.value)} onKeyDown={e => e.key === "Enter" && handle()} />
+        <input style={{ ...S.input, marginBottom: 9 }} placeholder="Email" type="email" value={email} onChange={e => setEmail(e.target.value)} />
+        <div style={{ position: "relative", marginBottom: 16 }}>
+          <input style={{ ...S.input, paddingRight: 40 }} placeholder="Password" type={showPwd ? "text" : "password"} value={password} onChange={e => setPassword(e.target.value)} onKeyDown={e => e.key === "Enter" && handle()} />
+          <button onClick={() => setShowPwd(!showPwd)} style={{ position: "absolute", right: 10, top: "50%", transform: "translateY(-50%)", background: "none", border: "none", color: "#888", cursor: "pointer", fontSize: 14 }}>
+            {showPwd ? "🙈" : "👁"}
+          </button>
+        </div>
         <button style={S.btnPrimary} onClick={handle}>Login to Dashboard</button>
-        <div style={{ fontSize: 11, color: "#444", marginTop: 10, textAlign: "center" }}>admin@medicosinn.com / Admin@123</div>
       </div>
     </div>
   );
 }
 
-// ── ADMIN DASHBOARD ───────────────────────────────────────────────────────────
 function AdminDashboard({ user, onLogout }) {
   const [page, setPage] = useState("dashboard");
   const [orders, setOrders] = useState([]);
@@ -498,10 +511,10 @@ function AdminDashboard({ user, onLogout }) {
   const [toast, setToast] = useState(null);
   const [editItem, setEditItem] = useState(null);
   const [newItem, setNewItem] = useState(null);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
-    loadOrders();
-    loadCustomers();
+    loadOrders(); loadCustomers();
     const ch = supabase.channel("admin-orders")
       .on("postgres_changes", { event: "*", schema: "public", table: "orders" }, () => loadOrders())
       .subscribe();
@@ -512,12 +525,10 @@ function AdminDashboard({ user, onLogout }) {
     const { data } = await supabase.from("orders").select("*").order("created_at", { ascending: false });
     if (data) setOrders(data);
   }
-
   async function loadCustomers() {
     const { data } = await supabase.from("users").select("*").eq("role", "customer").order("created_at", { ascending: false });
     if (data) setCustomers(data);
   }
-
   async function updateOrderStatus(id, status) {
     await supabase.from("orders").update({ status }).eq("id", id);
     setToast(`Order #${id} → ${status}`);
@@ -530,22 +541,35 @@ function AdminDashboard({ user, onLogout }) {
     { id: "dashboard", label: "Dashboard", icon: "📊" },
     { id: "orders", label: "Orders", icon: "🧾" },
     { id: "menu", label: "Menu Mgmt", icon: "🍴" },
-    { id: "coupons", label: "Coupons", icon: "🏷️" },
+    { id: "coupons", label: "Coupons", icon: "🏷" },
     { id: "customers", label: "Customers", icon: "👥" },
   ];
 
   return (
     <div style={{ ...S.app, display: "flex", flexDirection: "column" }}>
       {toast && <Toast msg={toast} onDone={() => setToast(null)} />}
-      <div style={{ background: "#111", borderBottom: "1px solid #2a2a2a", padding: "0 16px", display: "flex", alignItems: "center", justifyContent: "space-between", height: 52, flexShrink: 0 }}>
-        <div style={{ fontSize: 15, fontWeight: 800, color: "#e63946" }}>MEDICOS INN — Admin</div>
+      <div style={{ background: "#111", borderBottom: "1px solid #2a2a2a", padding: "0 14px", display: "flex", alignItems: "center", justifyContent: "space-between", height: 52, flexShrink: 0 }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+          {/* Mobile hamburger */}
+          <button style={{ background: "none", border: "none", color: "#ccc", fontSize: 20, cursor: "pointer", display: "block" }} onClick={() => setMenuOpen(!menuOpen)}>☰</button>
+          <div style={{ fontSize: 14, fontWeight: 800, color: "#e63946" }}>MEDICOS INN — Admin</div>
+        </div>
         <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
           <span style={{ fontSize: 11, color: "#666" }}>{user.role}</span>
-          <button style={{ ...S.btnDanger, padding: "5px 11px", fontSize: 11 }} onClick={onLogout}>Logout</button>
+          <button style={{ ...S.btnDanger, padding: "5px 10px", fontSize: 11 }} onClick={onLogout}>Logout</button>
         </div>
       </div>
-      <div style={S.adminLayout}>
-        <div style={S.sidebar}>
+      <div style={{ ...S.adminLayout, position: "relative" }}>
+        {/* Sidebar - hidden on mobile unless menuOpen */}
+        <div style={{ ...S.sidebar, display: menuOpen ? "block" : "none", position: "absolute", zIndex: 50, height: "100%", left: 0, top: 0 }}>
+          {sideItems.map(s => (
+            <div key={s.id} style={{ ...S.sidebarItem, ...(page === s.id ? S.sidebarItemActive : {}) }} onClick={() => { setPage(s.id); setMenuOpen(false); }}>
+              <span>{s.icon}</span>{s.label}
+            </div>
+          ))}
+        </div>
+        {/* Desktop sidebar */}
+        <div style={{ ...S.sidebar, display: "block", position: "relative" }} className="desktop-sidebar">
           {sideItems.map(s => (
             <div key={s.id} style={{ ...S.sidebarItem, ...(page === s.id ? S.sidebarItemActive : {}) }} onClick={() => setPage(s.id)}>
               <span>{s.icon}</span>{s.label}
@@ -553,27 +577,25 @@ function AdminDashboard({ user, onLogout }) {
           ))}
         </div>
         <div style={S.mainArea}>
-
-          {/* DASHBOARD */}
           {page === "dashboard" && <>
-            <div style={{ fontSize: 19, fontWeight: 800, marginBottom: 18 }}>Dashboard</div>
-            <div style={{ ...S.grid4, marginBottom: 24 }}>
+            <div style={{ fontSize: 17, fontWeight: 800, marginBottom: 16 }}>Dashboard</div>
+            <div style={{ ...S.grid4, marginBottom: 22 }}>
               {[
-                { label: "Today Sales", value: `₹${todaySales}`, icon: "💰" },
-                { label: "Today Orders", value: todayOrders.length, icon: "📦" },
+                { label: "Today Sales", value: `Rs.${todaySales}`, icon: "💰" },
+                { label: "Today Orders", value: todayOrders.length, icon: "📋" },
                 { label: "Pending", value: orders.filter(o => o.status === "pending").length, icon: "⏳" },
                 { label: "Total Orders", value: orders.length, icon: "🧾" },
               ].map(c => (
                 <div key={c.label} style={S.statCard}>
-                  <div style={{ fontSize: 22, marginBottom: 4 }}>{c.icon}</div>
+                  <div style={{ fontSize: 20, marginBottom: 4 }}>{c.icon}</div>
                   <div style={S.statNum}>{c.value}</div>
                   <div style={S.statLabel}>{c.label}</div>
                 </div>
               ))}
             </div>
-            <div style={{ fontSize: 15, fontWeight: 700, marginBottom: 12 }}>Recent Orders</div>
+            <div style={{ fontSize: 14, fontWeight: 700, marginBottom: 10 }}>Recent Orders</div>
             <div style={{ overflowX: "auto" }}>
-              <div style={{ background: "#161616", border: "1px solid #2a2a2a", borderRadius: 14, overflow: "hidden", minWidth: 580 }}>
+              <div style={{ background: "#161616", border: "1px solid #2a2a2a", borderRadius: 12, overflow: "hidden", minWidth: 520 }}>
                 <table style={S.table}>
                   <thead><tr><th style={S.th}>ID</th><th style={S.th}>Customer</th><th style={S.th}>Total</th><th style={S.th}>Type</th><th style={S.th}>Status</th><th style={S.th}>Actions</th></tr></thead>
                   <tbody>
@@ -581,7 +603,7 @@ function AdminDashboard({ user, onLogout }) {
                       <tr key={o.id}>
                         <td style={S.td}>#{o.id}</td>
                         <td style={S.td}>{o.customer_name || "Guest"}</td>
-                        <td style={{ ...S.td, color: "#e63946", fontWeight: 700 }}>₹{o.total}</td>
+                        <td style={{ ...S.td, color: "#e63946", fontWeight: 700 }}>Rs.{o.total}</td>
                         <td style={S.td}>{o.order_type}</td>
                         <td style={S.td}><StatusBadge status={o.status} /></td>
                         <td style={S.td}>
@@ -601,23 +623,21 @@ function AdminDashboard({ user, onLogout }) {
             </div>
           </>}
 
-          {/* ORDERS */}
           {page === "orders" && <>
-            <div style={{ fontSize: 19, fontWeight: 800, marginBottom: 18 }}>All Orders ({orders.length})</div>
+            <div style={{ fontSize: 17, fontWeight: 800, marginBottom: 16 }}>All Orders ({orders.length})</div>
             <div style={{ overflowX: "auto" }}>
-              <div style={{ background: "#161616", border: "1px solid #2a2a2a", borderRadius: 14, overflow: "hidden", minWidth: 680 }}>
+              <div style={{ background: "#161616", border: "1px solid #2a2a2a", borderRadius: 12, overflow: "hidden", minWidth: 600 }}>
                 <table style={S.table}>
-                  <thead><tr><th style={S.th}>ID</th><th style={S.th}>Customer</th><th style={S.th}>Items</th><th style={S.th}>Total</th><th style={S.th}>Type</th><th style={S.th}>Status</th><th style={S.th}>Time</th><th style={S.th}>Actions</th></tr></thead>
+                  <thead><tr><th style={S.th}>ID</th><th style={S.th}>Customer</th><th style={S.th}>Items</th><th style={S.th}>Total</th><th style={S.th}>Type</th><th style={S.th}>Status</th><th style={S.th}>Actions</th></tr></thead>
                   <tbody>
                     {orders.map(o => (
                       <tr key={o.id}>
                         <td style={S.td}>#{o.id}</td>
                         <td style={S.td}>{o.customer_name || "Guest"}</td>
-                        <td style={{ ...S.td, maxWidth: 130 }}>{(o.cart || []).map(i => `${i.qty}×${i.name}`).join(", ").substring(0, 30)}...</td>
-                        <td style={{ ...S.td, color: "#e63946", fontWeight: 700 }}>₹{o.total}</td>
+                        <td style={{ ...S.td, maxWidth: 110 }}>{(o.cart || []).map(i => `${i.qty}x${i.name}`).join(", ").substring(0, 28)}...</td>
+                        <td style={{ ...S.td, color: "#e63946", fontWeight: 700 }}>Rs.{o.total}</td>
                         <td style={S.td}>{o.order_type}</td>
                         <td style={S.td}><StatusBadge status={o.status} /></td>
-                        <td style={{ ...S.td, fontSize: 10, color: "#555" }}>{new Date(o.created_at).toLocaleTimeString()}</td>
                         <td style={S.td}>
                           <div style={{ display: "flex", gap: 3 }}>
                             {o.status === "pending" && <button style={{ ...S.btnSuccess, fontSize: 10, padding: "3px 7px" }} onClick={() => updateOrderStatus(o.id, "preparing")}>Prep</button>}
@@ -635,18 +655,17 @@ function AdminDashboard({ user, onLogout }) {
             </div>
           </>}
 
-          {/* MENU MANAGEMENT */}
           {page === "menu" && <>
-            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 18 }}>
-              <div style={{ fontSize: 19, fontWeight: 800 }}>Menu Management</div>
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 16 }}>
+              <div style={{ fontSize: 17, fontWeight: 800 }}>Menu Management</div>
               <button style={{ ...S.btnPrimary, width: "auto", padding: "8px 14px", fontSize: 12 }} onClick={() => setNewItem({ name: "", price: "", category: "beverages", veg: true, desc: "", popular: false })}>+ Add Item</button>
             </div>
             {newItem && (
-              <div style={{ background: "#161616", border: "1px solid #2a2a2a", borderRadius: 12, padding: 18, marginBottom: 18 }}>
+              <div style={{ background: "#161616", border: "1px solid #2a2a2a", borderRadius: 12, padding: 16, marginBottom: 16 }}>
                 <div style={{ fontSize: 13, fontWeight: 700, marginBottom: 12, color: "#e63946" }}>Add New Item</div>
                 <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 9, marginBottom: 9 }}>
                   <input style={S.input} placeholder="Item Name" value={newItem.name} onChange={e => setNewItem({ ...newItem, name: e.target.value })} />
-                  <input style={S.input} placeholder="Price (₹)" type="number" value={newItem.price} onChange={e => setNewItem({ ...newItem, price: +e.target.value })} />
+                  <input style={S.input} placeholder="Price" type="number" value={newItem.price} onChange={e => setNewItem({ ...newItem, price: +e.target.value })} />
                 </div>
                 <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 9, marginBottom: 9 }}>
                   <select style={S.select} value={newItem.category} onChange={e => setNewItem({ ...newItem, category: e.target.value })}>
@@ -669,7 +688,7 @@ function AdminDashboard({ user, onLogout }) {
               </div>
             )}
             {editItem && (
-              <div style={{ background: "#161616", border: "1px solid #2a2a2a", borderRadius: 12, padding: 18, marginBottom: 18 }}>
+              <div style={{ background: "#161616", border: "1px solid #2a2a2a", borderRadius: 12, padding: 16, marginBottom: 16 }}>
                 <div style={{ fontSize: 13, fontWeight: 700, marginBottom: 12, color: "#e63946" }}>Edit: {editItem.name}</div>
                 <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 9, marginBottom: 9 }}>
                   <input style={S.input} value={editItem.name} onChange={e => setEditItem({ ...editItem, name: e.target.value })} />
@@ -683,7 +702,7 @@ function AdminDashboard({ user, onLogout }) {
               </div>
             )}
             <div style={{ overflowX: "auto" }}>
-              <div style={{ background: "#161616", border: "1px solid #2a2a2a", borderRadius: 14, overflow: "hidden", minWidth: 480 }}>
+              <div style={{ background: "#161616", border: "1px solid #2a2a2a", borderRadius: 12, overflow: "hidden", minWidth: 420 }}>
                 <table style={S.table}>
                   <thead><tr><th style={S.th}>Name</th><th style={S.th}>Category</th><th style={S.th}>Price</th><th style={S.th}>Type</th><th style={S.th}>Actions</th></tr></thead>
                   <tbody>
@@ -691,12 +710,12 @@ function AdminDashboard({ user, onLogout }) {
                       <tr key={item.id}>
                         <td style={S.td}><VegDot veg={item.veg} />{item.name}</td>
                         <td style={{ ...S.td, color: "#888" }}>{MENU_CATEGORIES.find(c => c.id === item.category)?.label}</td>
-                        <td style={{ ...S.td, color: "#e63946", fontWeight: 700 }}>₹{item.price}</td>
+                        <td style={{ ...S.td, color: "#e63946", fontWeight: 700 }}>Rs.{item.price}</td>
                         <td style={S.td}><span style={{ ...S.badge, background: item.veg ? "#0a2a10" : "#2a0a0a", color: item.veg ? "#00ff6a" : "#ff6b6b", border: `1px solid ${item.veg ? "#1a5a20" : "#5a1a1a"}` }}>{item.veg ? "Veg" : "Non-Veg"}</span></td>
                         <td style={S.td}>
                           <div style={{ display: "flex", gap: 5 }}>
                             <button style={{ ...S.btnSecondary, padding: "4px 9px", fontSize: 11 }} onClick={() => setEditItem(item)}>Edit</button>
-                            <button style={{ ...S.btnDanger, padding: "4px 9px", fontSize: 11 }} onClick={() => { setMenuItems(menuItems.filter(x => x.id !== item.id)); setToast("Deleted"); }}>Delete</button>
+                            <button style={{ ...S.btnDanger, padding: "4px 9px", fontSize: 11 }} onClick={() => { setMenuItems(menuItems.filter(x => x.id !== item.id)); setToast("Deleted"); }}>Del</button>
                           </div>
                         </td>
                       </tr>
@@ -707,26 +726,24 @@ function AdminDashboard({ user, onLogout }) {
             </div>
           </>}
 
-          {/* COUPONS */}
           {page === "coupons" && <>
-            <div style={{ fontSize: 19, fontWeight: 800, marginBottom: 18 }}>Coupon Management</div>
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(220px, 1fr))", gap: 12 }}>
+            <div style={{ fontSize: 17, fontWeight: 800, marginBottom: 16 }}>Coupon Management</div>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))", gap: 12 }}>
               {coupons.map(c => (
                 <div key={c.code} style={{ ...S.card, padding: 16 }}>
                   <div style={{ fontSize: 17, fontWeight: 900, color: "#e63946", letterSpacing: 2, marginBottom: 5 }}>{c.code}</div>
                   <div style={{ fontSize: 12, color: "#ccc", marginBottom: 3 }}>{c.desc}</div>
-                  <div style={{ fontSize: 11, color: "#555", marginBottom: 9 }}>Min order: ₹{c.minOrder}</div>
+                  <div style={{ fontSize: 11, color: "#555", marginBottom: 9 }}>Min order: Rs.{c.minOrder}</div>
                   <button style={{ ...S.btnDanger, fontSize: 11, padding: "4px 11px" }} onClick={() => { setCoupons(coupons.filter(x => x.code !== c.code)); setToast("Deleted"); }}>Delete</button>
                 </div>
               ))}
             </div>
           </>}
 
-          {/* CUSTOMERS */}
           {page === "customers" && <>
-            <div style={{ fontSize: 19, fontWeight: 800, marginBottom: 18 }}>Customers ({customers.length})</div>
+            <div style={{ fontSize: 17, fontWeight: 800, marginBottom: 16 }}>Customers ({customers.length})</div>
             <div style={{ overflowX: "auto" }}>
-              <div style={{ background: "#161616", border: "1px solid #2a2a2a", borderRadius: 14, overflow: "hidden" }}>
+              <div style={{ background: "#161616", border: "1px solid #2a2a2a", borderRadius: 12, overflow: "hidden" }}>
                 <table style={S.table}>
                   <thead><tr><th style={S.th}>Name</th><th style={S.th}>Email</th><th style={S.th}>Phone</th><th style={S.th}>Joined</th></tr></thead>
                   <tbody>
@@ -744,20 +761,18 @@ function AdminDashboard({ user, onLogout }) {
               </div>
             </div>
           </>}
-
         </div>
       </div>
     </div>
   );
 }
 
-// ── HOME PAGE ─────────────────────────────────────────────────────────────────
 function HomePage({ onGoMenu }) {
   const featured = MENU_ITEMS.filter(i => i.popular).slice(0, 6);
   const offers = [
-    { title: "10% OFF", desc: "on orders above ₹300", code: "MEDICOS10", color: "#e63946" },
-    { title: "₹50 OFF", desc: "on your first order", code: "FIRST50", color: "#ff6b35" },
-    { title: "20% OFF", desc: "on orders above ₹500", code: "SAVE20", color: "#c23b22" },
+    { title: "10% OFF", desc: "on orders above Rs.300", code: "MEDICOS10", color: "#e63946" },
+    { title: "Rs.50 OFF", desc: "on your first order", code: "FIRST50", color: "#ff6b35" },
+    { title: "20% OFF", desc: "on orders above Rs.500", code: "SAVE20", color: "#c23b22" },
   ];
   return (
     <>
@@ -769,7 +784,7 @@ function HomePage({ onGoMenu }) {
           <p style={S.heroSub}>Premium café — Dine-in, Pickup & Delivery</p>
           <button style={S.heroBtn} onClick={onGoMenu}>Order Now</button>
           <button style={S.heroBtnOutline} onClick={onGoMenu}>View Menu</button>
-          <div style={{ display: "flex", justifyContent: "center", gap: "clamp(14px, 5vw, 32px)", marginTop: 36 }}>
+          <div style={{ display: "flex", justifyContent: "center", gap: "clamp(14px, 5vw, 32px)", marginTop: 32 }}>
             {[["110+", "Menu Items"], ["⭐ 4.8", "Rating"], ["Fast", "Delivery"]].map(([v, l]) => (
               <div key={l} style={{ textAlign: "center" }}>
                 <div style={{ fontSize: 18, fontWeight: 900, color: "#e63946" }}>{v}</div>
@@ -781,12 +796,12 @@ function HomePage({ onGoMenu }) {
       </div>
 
       <div style={{ ...S.section, paddingBottom: 0 }}>
-        <div style={S.sectionTitle}>Today's Offers 🏷️</div>
+        <div style={S.sectionTitle}>Today's Offers 🏷</div>
         <div style={S.sectionSub}>Use these codes at checkout</div>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))", gap: 12 }}>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(180px, 1fr))", gap: 11 }}>
           {offers.map(o => (
-            <div key={o.code} style={{ background: `linear-gradient(135deg, ${o.color}22, #1a1a1a)`, border: `1px solid ${o.color}44`, borderRadius: 12, padding: "16px 18px" }}>
-              <div style={{ fontSize: 24, fontWeight: 900, color: o.color }}>{o.title}</div>
+            <div key={o.code} style={{ background: `linear-gradient(135deg, ${o.color}22, #1a1a1a)`, border: `1px solid ${o.color}44`, borderRadius: 12, padding: "14px 16px" }}>
+              <div style={{ fontSize: 22, fontWeight: 900, color: o.color }}>{o.title}</div>
               <div style={{ fontSize: 12, color: "#aaa", marginBottom: 9 }}>{o.desc}</div>
               <div style={{ background: "#1a1a1a", border: "1px dashed #3a3a3a", borderRadius: 7, padding: "4px 9px", display: "inline-block", fontFamily: "monospace", fontSize: 12, fontWeight: 700 }}>{o.code}</div>
             </div>
@@ -802,11 +817,11 @@ function HomePage({ onGoMenu }) {
             const emoji = MENU_CATEGORIES.find(c => c.id === item.category)?.icon || "🍴";
             return (
               <div key={item.id} style={{ ...S.card, padding: 14, display: "flex", gap: 12, alignItems: "center" }}>
-                <div style={{ fontSize: 32, width: 52, height: 52, display: "flex", alignItems: "center", justifyContent: "center", background: "#1a1a1a", borderRadius: 10, flexShrink: 0 }}>{emoji}</div>
+                <div style={{ fontSize: 30, width: 48, height: 48, display: "flex", alignItems: "center", justifyContent: "center", background: "#1a1a1a", borderRadius: 10, flexShrink: 0 }}>{emoji}</div>
                 <div style={{ flex: 1, minWidth: 0 }}>
                   <div style={{ fontSize: 13, fontWeight: 700, marginBottom: 2 }}>{item.name}</div>
                   <div style={{ fontSize: 11, color: "#888", marginBottom: 5 }}>{item.desc}</div>
-                  <div style={{ fontSize: 14, fontWeight: 800, color: "#e63946" }}>₹{item.price}</div>
+                  <div style={{ fontSize: 14, fontWeight: 800, color: "#e63946" }}>Rs.{item.price}</div>
                 </div>
               </div>
             );
@@ -817,7 +832,7 @@ function HomePage({ onGoMenu }) {
         </div>
       </div>
 
-      <div style={{ background: "#111", borderTop: "1px solid #1a1a1a", padding: "24px 16px", textAlign: "center" }}>
+      <div style={{ background: "#111", borderTop: "1px solid #1a1a1a", padding: "22px 16px", textAlign: "center" }}>
         <div style={{ fontSize: 11, color: "#888", marginBottom: 5 }}>Accepts UPI, Cards & Cash</div>
         <div style={{ fontSize: 11, color: "#555" }}>UPI: Q057269975@ybl | 📞 9175509001 / 9922333089</div>
       </div>
@@ -825,8 +840,7 @@ function HomePage({ onGoMenu }) {
   );
 }
 
-// ── MENU PAGE ─────────────────────────────────────────────────────────────────
-function MenuPage({ cart, onAdd, onRemove }) {
+function MenuPage({ cart, onAdd, onRemove, user, onNeedLogin }) {
   const [activeCat, setActiveCat] = useState("all");
   const [search, setSearch] = useState("");
   const [vegOnly, setVegOnly] = useState(false);
@@ -854,14 +868,13 @@ function MenuPage({ cart, onAdd, onRemove }) {
       </div>
       <div style={{ marginTop: 14, marginBottom: 7, fontSize: 12, color: "#555" }}>{filtered.length} items</div>
       <div style={S.grid2}>
-        {filtered.map(item => <MenuItemCard key={item.id} item={item} cartQty={getQty(item)} onAdd={onAdd} onRemove={onRemove} />)}
+        {filtered.map(item => <MenuItemCard key={item.id} item={item} cartQty={getQty(item)} onAdd={onAdd} onRemove={onRemove} user={user} onNeedLogin={onNeedLogin} />)}
       </div>
-      {filtered.length === 0 && <div style={{ textAlign: "center", color: "#555", padding: 50 }}>No items found 🍽️</div>}
+      {filtered.length === 0 && <div style={{ textAlign: "center", color: "#555", padding: 50 }}>No items found 🍽</div>}
     </div>
   );
 }
 
-// ── PROFILE PAGE ──────────────────────────────────────────────────────────────
 function ProfilePage({ user }) {
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -874,17 +887,17 @@ function ProfilePage({ user }) {
   return (
     <div style={S.section}>
       <div style={S.sectionTitle}>My Profile</div>
-      <div style={{ display: "grid", gridTemplateColumns: "clamp(160px, 28%, 220px) 1fr", gap: 18, marginTop: 14 }}>
-        <div style={{ ...S.card, padding: 18 }}>
-          <div style={{ width: 52, height: 52, borderRadius: "50%", background: "#2a0000", border: "2px solid #e63946", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 20, fontWeight: 800, color: "#e63946", marginBottom: 12 }}>
+      <div style={{ display: "grid", gridTemplateColumns: "clamp(140px, 28%, 200px) 1fr", gap: 16, marginTop: 14 }}>
+        <div style={{ ...S.card, padding: 16 }}>
+          <div style={{ width: 48, height: 48, borderRadius: "50%", background: "#2a0000", border: "2px solid #e63946", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 20, fontWeight: 800, color: "#e63946", marginBottom: 12 }}>
             {user.name?.charAt(0).toUpperCase()}
           </div>
-          <div style={{ fontWeight: 800, fontSize: 15, marginBottom: 3 }}>{user.name}</div>
+          <div style={{ fontWeight: 800, fontSize: 14, marginBottom: 3 }}>{user.name}</div>
           <div style={{ color: "#888", fontSize: 12, marginBottom: 2 }}>{user.email}</div>
           <div style={{ color: "#888", fontSize: 12 }}>{user.phone}</div>
         </div>
         <div>
-          <div style={{ fontSize: 15, fontWeight: 700, marginBottom: 12 }}>Order History ({orders.length})</div>
+          <div style={{ fontSize: 14, fontWeight: 700, marginBottom: 10 }}>Order History ({orders.length})</div>
           {loading && <div style={{ color: "#555", fontSize: 13 }}>Loading...</div>}
           {!loading && orders.length === 0 && <div style={{ color: "#555", fontSize: 13 }}>No orders yet!</div>}
           {orders.map(o => (
@@ -893,10 +906,10 @@ function ProfilePage({ user }) {
                 <span style={{ fontWeight: 700, fontSize: 13 }}>Order #{o.id}</span>
                 <StatusBadge status={o.status} />
               </div>
-              <div style={{ fontSize: 11, color: "#888", marginBottom: 4 }}>{(o.cart || []).map(i => `${i.qty}×${i.name}`).join(", ")}</div>
+              <div style={{ fontSize: 11, color: "#888", marginBottom: 4 }}>{(o.cart || []).map(i => `${i.qty}x${i.name}`).join(", ")}</div>
               <div style={{ display: "flex", justifyContent: "space-between" }}>
                 <span style={{ fontSize: 11, color: "#555" }}>{o.order_type} • {new Date(o.created_at).toLocaleDateString()}</span>
-                <span style={{ fontWeight: 700, color: "#e63946", fontSize: 13 }}>₹{o.total}</span>
+                <span style={{ fontWeight: 700, color: "#e63946", fontSize: 13 }}>Rs.{o.total}</span>
               </div>
             </div>
           ))}
@@ -906,7 +919,6 @@ function ProfilePage({ user }) {
   );
 }
 
-// ── ROOT APP ──────────────────────────────────────────────────────────────────
 export default function App() {
   const [page, setPage] = useState("home");
   const [cart, setCart] = useState([]);
@@ -923,6 +935,10 @@ export default function App() {
     link.rel = "stylesheet";
     link.href = "https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&display=swap";
     document.head.appendChild(link);
+    // Fix mobile viewport overflow
+    document.body.style.overflowX = "hidden";
+    document.body.style.margin = "0";
+    document.body.style.padding = "0";
   }, []);
 
   function addToCart(item) {
@@ -942,6 +958,11 @@ export default function App() {
     });
   }
 
+  function handleNeedLogin() {
+    setShowAuth(true);
+    setToast("Order karne ke liye pehle login karo! 🔒");
+  }
+
   async function placeOrder(orderData) {
     const orderId = Date.now().toString().slice(-6);
     const order = {
@@ -958,7 +979,7 @@ export default function App() {
       status: "pending",
     };
     const { data, error } = await supabase.from("orders").insert([order]).select().single();
-    if (error) { setToast("Order place karne mein error! ❌"); return; }
+    if (error) { setToast("Order mein error! ❌"); return; }
     setCart([]);
     setCartOpen(false);
     setTrackOrder(data || order);
@@ -980,21 +1001,25 @@ export default function App() {
 
       <nav style={S.nav}>
         <div style={S.logo} onClick={() => setPage("home")}>
-          <div style={{ width: 30, height: 30, borderRadius: 8, background: "#e63946", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 15 }}>🏥</div>
+          <div style={{ width: 28, height: 28, borderRadius: 8, background: "#e63946", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 14 }}>🍽</div>
           <div>
             <div style={S.logoText}>MEDICOS INN</div>
             <div style={S.logoSub}>Premium Café</div>
           </div>
         </div>
         <div style={S.navLinks}>
-          {[["home", "Home"], ["menu", "Menu"], ["profile", "Profile"]].map(([p, l]) => (
-            <button key={p} style={{ ...S.navBtn, ...(page === p ? S.navBtnActive : {}) }} onClick={() => p === "profile" && !user ? setShowAuth(true) : setPage(p)}>{l}</button>
+          {[["home", "Home"], ["menu", "Menu"]].map(([p, l]) => (
+            <button key={p} style={{ ...S.navBtn, ...(page === p ? S.navBtnActive : {}) }} onClick={() => setPage(p)}>{l}</button>
           ))}
-          {!user
-            ? <button style={S.navBtn} onClick={() => setShowAuth(true)}>Login</button>
-            : <button style={{ ...S.navBtn, color: "#e63946", fontSize: 11 }} onClick={() => { setUser(null); setToast("Logged out"); }}>Logout</button>
+          {user
+            ? <>
+                <button style={{ ...S.navBtn, ...(page === "profile" ? S.navBtnActive : {}) }} onClick={() => setPage("profile")}>Profile</button>
+                <button style={{ ...S.navBtn, color: "#e63946", fontSize: 11 }} onClick={() => { setUser(null); setPage("home"); setToast("Logged out"); }}>Logout</button>
+              </>
+            : <button style={S.navBtn} onClick={() => setShowAuth(true)}>Login</button>
           }
-          <button style={{ ...S.navBtn, color: "#444", fontSize: 10 }} onClick={() => setAdminMode(true)}>Admin</button>
+          {/* FIXED: Admin button hidden - small & subtle */}
+          <button style={{ background: "none", border: "none", color: "#2a2a2a", fontSize: 10, cursor: "pointer", padding: "4px 6px" }} onClick={() => setAdminMode(true)}>•••</button>
           <button style={S.cartBtn} onClick={() => setCartOpen(true)}>
             🛒 {cartCount > 0 && <span style={{ background: "#fff", color: "#e63946", borderRadius: "50%", width: 17, height: 17, display: "inline-flex", alignItems: "center", justifyContent: "center", fontSize: 10, fontWeight: 900 }}>{cartCount}</span>}
           </button>
@@ -1002,10 +1027,10 @@ export default function App() {
       </nav>
 
       {cartOpen && <div style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.5)", zIndex: 150 }} onClick={() => setCartOpen(false)} />}
-      {cartOpen && <CartSidebar cart={cart} onClose={() => setCartOpen(false)} onAdd={addToCart} onRemove={removeFromCart} onPlaceOrder={placeOrder} />}
+      {cartOpen && <CartSidebar cart={cart} onClose={() => setCartOpen(false)} onAdd={addToCart} onRemove={removeFromCart} onPlaceOrder={placeOrder} user={user} />}
 
       {page === "home" && <HomePage onGoMenu={() => setPage("menu")} />}
-      {page === "menu" && <MenuPage cart={cart} onAdd={addToCart} onRemove={removeFromCart} />}
+      {page === "menu" && <MenuPage cart={cart} onAdd={addToCart} onRemove={removeFromCart} user={user} onNeedLogin={handleNeedLogin} />}
       {page === "profile" && user && <ProfilePage user={user} />}
       {page === "profile" && !user && (
         <div style={{ padding: 60, textAlign: "center" }}>
@@ -1014,8 +1039,15 @@ export default function App() {
         </div>
       )}
 
-      <footer style={{ background: "#0a0a0a", borderTop: "1px solid #1a1a1a", padding: "24px 16px", textAlign: "center" }}>
-        <div style={{ fontSize: 16, fontWeight: 800, color: "#e63946", marginBottom: 3 }}>MEDICOS INN</div>
+      {/* FIX: Floating View Cart button when items in cart */}
+      {cartCount > 0 && !cartOpen && (
+        <button style={S.floatingCart} onClick={() => setCartOpen(true)}>
+          🛒 View Cart ({cartCount} items) — Rs.{cart.reduce((s, i) => s + i.price * i.qty, 0)}
+        </button>
+      )}
+
+      <footer style={{ background: "#0a0a0a", borderTop: "1px solid #1a1a1a", padding: "22px 16px", textAlign: "center", paddingBottom: cartCount > 0 ? 80 : 22 }}>
+        <div style={{ fontSize: 15, fontWeight: 800, color: "#e63946", marginBottom: 3 }}>MEDICOS INN</div>
         <div style={{ fontSize: 11, color: "#555", marginBottom: 5 }}>Premium Café • Pune, Maharashtra</div>
         <div style={{ fontSize: 11, color: "#555" }}>📞 9175509001 / 9922333089 | UPI: Q057269975@ybl</div>
         <div style={{ fontSize: 10, color: "#333", marginTop: 10 }}>Buy Any 3 Rolls Get 1 Free! 🌯</div>

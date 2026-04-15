@@ -28,116 +28,116 @@ const MENU_CATEGORIES = [
 ];
 
 const MENU_ITEMS = [
-  { id: 1, category: "beverages", name: "Lime and Mint Mojito", price: 60, veg: true, popular: true, desc: "Refreshing lime & mint cooler" },
-  { id: 2, category: "beverages", name: "Blue Lagoon", price: 60, veg: true, desc: "Cool blue refresher" },
-  { id: 3, category: "beverages", name: "Chilli Mojito", price: 60, veg: true, desc: "Spicy mojito twist" },
-  { id: 4, category: "milkshakes", name: "Mango Shake", price: 60, veg: true, popular: true, desc: "Fresh mango blended smooth" },
-  { id: 5, category: "milkshakes", name: "Strawberry Shake", price: 60, veg: true, desc: "Sweet strawberry bliss" },
-  { id: 6, category: "milkshakes", name: "Black Current", price: 60, veg: true, desc: "Rich black current shake" },
-  { id: 7, category: "milkshakes", name: "Cranberry", price: 60, veg: true, desc: "Tangy cranberry delight" },
-  { id: 8, category: "milkshakes", name: "Kiwi", price: 60, veg: true, desc: "Fresh kiwi shake" },
-  { id: 9, category: "milkshakes", name: "Blue Berry", price: 60, veg: true, desc: "Blueberry creamy shake" },
-  { id: 10, category: "milkshakes", name: "Cold Bornvita", price: 60, veg: true, desc: "Chilled Bornvita shake" },
-  { id: 11, category: "milkshakes", name: "Chocolate Shake", price: 70, veg: true, popular: true, desc: "Rich chocolate shake" },
-  { id: 12, category: "milkshakes", name: "Kit Kat Shake", price: 70, veg: true, desc: "Kit Kat crunch shake" },
-  { id: 13, category: "milkshakes", name: "Oreo Shake", price: 70, veg: true, desc: "Oreo cookie shake" },
-  { id: 14, category: "milkshakes", name: "Brownie Loaded Shake", price: 100, veg: true, popular: true, desc: "Decadent brownie shake" },
-  { id: 15, category: "milkshakes", name: "Cold Coffee", price: 50, veg: true, desc: "Chilled coffee blast" },
-  { id: 16, category: "milkshakes", name: "Hazelnut", price: 60, veg: true, desc: "Hazelnut flavoured shake" },
-  { id: 17, category: "milkshakes", name: "Chocolate (Cold)", price: 60, veg: true, desc: "Cold chocolate shake" },
-  { id: 18, category: "hot", name: "Hot Coffee", price: 20, veg: true, desc: "Classic hot coffee" },
-  { id: 19, category: "hot", name: "Hot Bornvita", price: 50, veg: true, desc: "Warm Bornvita drink" },
-  { id: 20, category: "hot", name: "Hot Chocolate", price: 60, veg: true, desc: "Rich hot chocolate" },
-  { id: 21, category: "maggie", name: "Plain Maggie", price: 30, veg: true, desc: "Classic plain maggi" },
-  { id: 22, category: "maggie", name: "Hot and Spicy Maggie", price: 40, veg: true, popular: true, desc: "Spicy masala maggi" },
-  { id: 23, category: "maggie", name: "Plain Masala", price: 40, veg: true, desc: "Masala flavoured maggi" },
-  { id: 24, category: "maggie", name: "Vegetable Masala", price: 50, veg: true, desc: "Veggie loaded masala maggi" },
-  { id: 25, category: "maggie", name: "Plain Cheese", price: 50, veg: true, desc: "Cheesy plain maggi" },
-  { id: 26, category: "maggie", name: "Masala Cheese", price: 60, veg: true, desc: "Masala cheese maggi" },
-  { id: 27, category: "maggie", name: "Vegetable Masala Cheese", price: 70, veg: true, desc: "Veg masala cheese maggi" },
-  { id: 28, category: "maggie", name: "Punjabi Tadka", price: 70, veg: true, desc: "Punjabi style maggi" },
-  { id: 29, category: "maggie", name: "Anda Maggie", price: 70, veg: false, desc: "Egg loaded maggi" },
-  { id: 30, category: "momos", name: "Veg Fried Momos", price: 90, veg: true, popular: true, desc: "Crispy fried veg momos" },
-  { id: 31, category: "momos", name: "Paneer Fried Momos", price: 120, veg: true, desc: "Paneer stuffed fried momos" },
-  { id: 32, category: "momos", name: "Pizza Style Momos", price: 150, veg: true, popular: true, desc: "Pizza flavoured momos" },
-  { id: 33, category: "sandwiches", name: "Plain Cheese Sandwich", price: 60, veg: true, desc: "Classic cheese sandwich" },
-  { id: 34, category: "sandwiches", name: "Aloo Masala Sandwich", price: 60, veg: true, desc: "Spicy potato sandwich" },
-  { id: 35, category: "sandwiches", name: "Veg Cheese Sandwich", price: 65, veg: true, desc: "Loaded veg cheese sandwich" },
-  { id: 36, category: "sandwiches", name: "Veg Schezwan Sandwich", price: 65, veg: true, desc: "Schezwan spicy sandwich" },
-  { id: 37, category: "sandwiches", name: "Bombay Sandwich", price: 70, veg: true, popular: true, desc: "Mumbai style sandwich" },
-  { id: 38, category: "sandwiches", name: "Cheese Corn Sandwich", price: 70, veg: true, desc: "Corn & cheese delight" },
-  { id: 39, category: "sandwiches", name: "Schezwan Cheese Corn", price: 75, veg: true, desc: "Schezwan corn sandwich" },
-  { id: 40, category: "sandwiches", name: "Paneer Cheese Sandwich", price: 80, veg: true, desc: "Rich paneer cheese sandwich" },
-  { id: 41, category: "sandwiches", name: "Paneer Makhni Sandwich", price: 90, veg: true, desc: "Makhni paneer sandwich" },
-  { id: 42, category: "sandwiches", name: "Tandoori Paneer Sandwich", price: 90, veg: true, popular: true, desc: "Tandoori spiced paneer sandwich" },
-  { id: 43, category: "sandwiches", name: "Chicken Cheese Sandwich", price: 100, veg: false, desc: "Loaded chicken cheese sandwich" },
-  { id: 44, category: "sandwiches", name: "Chicken Schezwan Sandwich", price: 100, veg: false, desc: "Spicy schezwan chicken sandwich" },
-  { id: 45, category: "sandwiches", name: "Tandoori Chicken Sandwich", price: 110, veg: false, desc: "Tandoori chicken sandwich" },
-  { id: 46, category: "sandwiches", name: "Chicken Makhni Sandwich", price: 120, veg: false, desc: "Makhni chicken sandwich" },
-  { id: 47, category: "double_decker", name: "Veg Cheese Sandwich (DD)", price: 100, veg: true, desc: "Double decker veg cheese" },
-  { id: 48, category: "double_decker", name: "Cheese Corn Paneer Sandwich", price: 110, veg: true, desc: "Triple loaded double decker" },
-  { id: 49, category: "double_decker", name: "Paneer Cheese Sandwich (DD)", price: 120, veg: true, desc: "Double decker paneer cheese" },
-  { id: 50, category: "double_decker", name: "Tandoori Paneer Sandwich (DD)", price: 130, veg: true, popular: true, desc: "Double decker tandoori paneer" },
-  { id: 51, category: "double_decker", name: "Paneer Makhni Sandwich (DD)", price: 130, veg: true, desc: "Makhni double decker" },
-  { id: 52, category: "double_decker", name: "Chicken Cheese Sandwich (DD)", price: 150, veg: false, desc: "Chicken cheese double decker" },
-  { id: 53, category: "double_decker", name: "Chiken Tandoori Sandwich (DD)", price: 150, veg: false, desc: "Tandoori chicken double decker" },
-  { id: 54, category: "double_decker", name: "Egg Chiken Cheese Sandwich", price: 160, veg: false, desc: "Egg chicken cheese double decker" },
-  { id: 55, category: "pasta", name: "Red Sauce Pasta", price: 120, veg: true, desc: "Classic tomato red sauce pasta" },
-  { id: 56, category: "pasta", name: "White Sauce Pasta", price: 130, veg: true, popular: true, desc: "Creamy white sauce pasta" },
-  { id: 57, category: "pasta", name: "Pink Sauce Pasta", price: 140, veg: true, desc: "Mixed pink sauce pasta" },
-  { id: 58, category: "pasta", name: "Chicken Red Sauce Pasta", price: 140, veg: false, desc: "Chicken in red sauce pasta" },
-  { id: 59, category: "pasta", name: "Chicken White Sauce Pasta", price: 150, veg: false, desc: "Chicken creamy pasta" },
-  { id: 60, category: "hotdog", name: "Chicken Cheese Hot Dog", price: 150, veg: false, popular: true, desc: "Loaded chicken cheese hot dog" },
-  { id: 61, category: "hotdog", name: "Spicy Chicken Hot Dog", price: 160, veg: false, desc: "Spicy grilled chicken hot dog" },
-  { id: 62, category: "paratha", name: "Aloo Paratha", price: 60, veg: true, desc: "Classic stuffed aloo paratha" },
-  { id: 63, category: "paratha", name: "Paneer Paratha", price: 80, veg: true, desc: "Stuffed paneer paratha" },
-  { id: 64, category: "paratha", name: "Cheese Paratha", price: 80, veg: true, popular: true, desc: "Cheesy paratha" },
-  { id: 65, category: "veg_burger", name: "Aloo Tikki Burger", price: 60, veg: true, desc: "Crispy aloo tikki burger" },
-  { id: 66, category: "veg_burger", name: "Herb and Chilli Burger", price: 65, veg: true, desc: "Herb chilli veg burger" },
-  { id: 67, category: "veg_burger", name: "Hot and Spicy Burger", price: 65, veg: true, popular: true, desc: "Fiery spicy veg burger" },
-  { id: 68, category: "veg_burger", name: "Double Patty Burger", price: 90, veg: true, desc: "Double veg patty burger" },
-  { id: 69, category: "veg_burger", name: "Zinger Paneer Burger", price: 110, veg: true, popular: true, desc: "Zinger style paneer burger" },
-  { id: 70, category: "non_veg_burger", name: "Chicken Burger", price: 80, veg: false, popular: true, desc: "Classic chicken burger" },
-  { id: 71, category: "non_veg_burger", name: "Chicken Egg Burger", price: 90, veg: false, desc: "Chicken egg layered burger" },
-  { id: 72, category: "non_veg_burger", name: "Chicken Double Patty Burger", price: 110, veg: false, desc: "Double chicken patty burger" },
-  { id: 73, category: "non_veg_burger", name: "Zinger Chicken Burger", price: 120, veg: false, popular: true, desc: "Zinger crispy chicken burger" },
-  { id: 74, category: "pizza", name: "Marguerite Pizza", price: 90, veg: true, desc: "Classic margherita pizza" },
-  { id: 75, category: "pizza", name: "Onion Capsicum Pizza", price: 100, veg: true, desc: "Onion capsicum pizza" },
-  { id: 76, category: "pizza", name: "Tomato Onion Pizza", price: 100, veg: true, desc: "Tomato onion pizza" },
-  { id: 77, category: "pizza", name: "Cheese Corn Pizza", price: 110, veg: true, popular: true, desc: "Loaded cheese corn pizza" },
-  { id: 78, category: "pizza", name: "Veggie Overload Pizza", price: 110, veg: true, desc: "Loaded veggie pizza" },
-  { id: 79, category: "pizza", name: "Tandoori Paneer Pizza", price: 130, veg: true, popular: true, desc: "Tandoori paneer pizza" },
-  { id: 80, category: "pizza", name: "Paneer Makhni Pizza", price: 130, veg: true, desc: "Makhni paneer pizza" },
-  { id: 81, category: "pizza", name: "Paneer Overloaded Pizza", price: 140, veg: true, desc: "Overloaded paneer pizza" },
-  { id: 82, category: "pizza", name: "Chicken Pizza", price: 150, veg: false, popular: true, desc: "Classic chicken pizza" },
-  { id: 83, category: "eggs", name: "Half Fry", price: 50, veg: false, desc: "Classic half fried egg" },
-  { id: 84, category: "eggs", name: "Omlet", price: 50, veg: false, desc: "Plain omelette" },
-  { id: 85, category: "eggs", name: "Butter Cheese Omlet", price: 70, veg: false, desc: "Buttery cheese omelette" },
-  { id: 86, category: "eggs", name: "Fluffy Omlet", price: 80, veg: false, desc: "Fluffy whipped omelette" },
-  { id: 87, category: "eggs", name: "Bhurji Bread", price: 80, veg: false, desc: "Egg bhurji with bread" },
-  { id: 88, category: "protein", name: "Paneer Veggies Protein Salad", price: 150, veg: true, popular: true, desc: "High protein paneer veggie salad" },
-  { id: 89, category: "protein", name: "Chicken Veggies Protein Salad", price: 160, veg: false, desc: "Chicken protein salad bowl" },
-  { id: 90, category: "nuggets", name: "Veg Nuggets", price: 50, veg: true, desc: "Crispy veg nuggets" },
-  { id: 91, category: "nuggets", name: "Cheese Nuggets", price: 70, veg: true, popular: true, desc: "Loaded cheese nuggets" },
-  { id: 92, category: "nuggets", name: "Chicken Nuggets", price: 90, veg: false, desc: "Classic chicken nuggets" },
-  { id: 93, category: "fries", name: "Plain Fries", price: 60, veg: true, desc: "Crispy plain fries" },
-  { id: 94, category: "fries", name: "Peri Peri Fries", price: 70, veg: true, popular: true, desc: "Spicy peri peri fries" },
-  { id: 95, category: "fries", name: "Cheese Fries", price: 90, veg: true, popular: true, desc: "Cheesy loaded fries" },
-  { id: 96, category: "veg_rolls", name: "Paneer Roll", price: 90, veg: true, desc: "Classic paneer roll" },
-  { id: 97, category: "veg_rolls", name: "Paneer Makhni Roll", price: 100, veg: true, popular: true, desc: "Makhni paneer roll" },
-  { id: 98, category: "veg_rolls", name: "Tandoori Paneer Roll", price: 100, veg: true, desc: "Tandoori paneer roll" },
-  { id: 99, category: "veg_rolls", name: "Paneer Cheese Roll", price: 100, veg: true, desc: "Cheese stuffed paneer roll" },
-  { id: 100, category: "veg_rolls", name: "Paneer Schezwan Roll", price: 100, veg: true, desc: "Schezwan paneer roll" },
-  { id: 101, category: "veg_rolls", name: "Veg Roll", price: 60, veg: true, desc: "Simple veg roll" },
-  { id: 102, category: "veg_rolls", name: "Veg Cheese Roll", price: 70, veg: true, desc: "Veg with cheese roll" },
-  { id: 103, category: "veg_rolls", name: "Veg Schezwan Roll", price: 70, veg: true, desc: "Schezwan veg roll" },
-  { id: 104, category: "non_veg_rolls", name: "Chicken Cheese Roll", price: 120, veg: false, popular: true, desc: "Loaded chicken cheese roll" },
-  { id: 105, category: "non_veg_rolls", name: "Tandoori Chicken Roll", price: 120, veg: false, desc: "Tandoori chicken roll" },
-  { id: 106, category: "non_veg_rolls", name: "Chicken Makhni Roll", price: 130, veg: false, desc: "Makhni chicken roll" },
-  { id: 107, category: "non_veg_rolls", name: "Butter Chicken Roll", price: 130, veg: false, desc: "Butter chicken roll" },
-  { id: 108, category: "non_veg_rolls", name: "Egg Roll", price: 60, veg: false, desc: "Classic egg roll" },
-  { id: 109, category: "non_veg_rolls", name: "Egg Cheese Roll", price: 70, veg: false, desc: "Egg cheese roll" },
-  { id: 110, category: "non_veg_rolls", name: "Egg Schezwan Roll", price: 80, veg: false, desc: "Schezwan egg roll" },
+  { id: 1, category: "beverages", name: "Lime and Mint Mojito", price: 60, veg: true, popular: true, desc: "Refreshing lime & mint cooler", image: "" },
+  { id: 2, category: "beverages", name: "Blue Lagoon", price: 60, veg: true, desc: "Cool blue refresher", image: "" },
+  { id: 3, category: "beverages", name: "Chilli Mojito", price: 60, veg: true, desc: "Spicy mojito twist", image: "" },
+  { id: 4, category: "milkshakes", name: "Mango Shake", price: 60, veg: true, popular: true, desc: "Fresh mango blended smooth", image: "" },
+  { id: 5, category: "milkshakes", name: "Strawberry Shake", price: 60, veg: true, desc: "Sweet strawberry bliss", image: "" },
+  { id: 6, category: "milkshakes", name: "Black Current", price: 60, veg: true, desc: "Rich black current shake", image: "" },
+  { id: 7, category: "milkshakes", name: "Cranberry", price: 60, veg: true, desc: "Tangy cranberry delight", image: "" },
+  { id: 8, category: "milkshakes", name: "Kiwi", price: 60, veg: true, desc: "Fresh kiwi shake", image: "" },
+  { id: 9, category: "milkshakes", name: "Blue Berry", price: 60, veg: true, desc: "Blueberry creamy shake", image: "" },
+  { id: 10, category: "milkshakes", name: "Cold Bornvita", price: 60, veg: true, desc: "Chilled Bornvita shake", image: "" },
+  { id: 11, category: "milkshakes", name: "Chocolate Shake", price: 70, veg: true, popular: true, desc: "Rich chocolate shake", image: "" },
+  { id: 12, category: "milkshakes", name: "Kit Kat Shake", price: 70, veg: true, desc: "Kit Kat crunch shake", image: "" },
+  { id: 13, category: "milkshakes", name: "Oreo Shake", price: 70, veg: true, desc: "Oreo cookie shake", image: "" },
+  { id: 14, category: "milkshakes", name: "Brownie Loaded Shake", price: 100, veg: true, popular: true, desc: "Decadent brownie shake", image: "" },
+  { id: 15, category: "milkshakes", name: "Cold Coffee", price: 50, veg: true, desc: "Chilled coffee blast", image: "" },
+  { id: 16, category: "milkshakes", name: "Hazelnut", price: 60, veg: true, desc: "Hazelnut flavoured shake", image: "" },
+  { id: 17, category: "milkshakes", name: "Chocolate (Cold)", price: 60, veg: true, desc: "Cold chocolate shake", image: "" },
+  { id: 18, category: "hot", name: "Hot Coffee", price: 20, veg: true, desc: "Classic hot coffee", image: "" },
+  { id: 19, category: "hot", name: "Hot Bornvita", price: 50, veg: true, desc: "Warm Bornvita drink", image: "" },
+  { id: 20, category: "hot", name: "Hot Chocolate", price: 60, veg: true, desc: "Rich hot chocolate", image: "" },
+  { id: 21, category: "maggie", name: "Plain Maggie", price: 30, veg: true, desc: "Classic plain maggi", image: "" },
+  { id: 22, category: "maggie", name: "Hot and Spicy Maggie", price: 40, veg: true, popular: true, desc: "Spicy masala maggi", image: "" },
+  { id: 23, category: "maggie", name: "Plain Masala", price: 40, veg: true, desc: "Masala flavoured maggi", image: "" },
+  { id: 24, category: "maggie", name: "Vegetable Masala", price: 50, veg: true, desc: "Veggie loaded masala maggi", image: "" },
+  { id: 25, category: "maggie", name: "Plain Cheese", price: 50, veg: true, desc: "Cheesy plain maggi", image: "" },
+  { id: 26, category: "maggie", name: "Masala Cheese", price: 60, veg: true, desc: "Masala cheese maggi", image: "" },
+  { id: 27, category: "maggie", name: "Vegetable Masala Cheese", price: 70, veg: true, desc: "Veg masala cheese maggi", image: "" },
+  { id: 28, category: "maggie", name: "Punjabi Tadka", price: 70, veg: true, desc: "Punjabi style maggi", image: "" },
+  { id: 29, category: "maggie", name: "Anda Maggie", price: 70, veg: false, desc: "Egg loaded maggi", image: "" },
+  { id: 30, category: "momos", name: "Veg Fried Momos", price: 90, veg: true, popular: true, desc: "Crispy fried veg momos", image: "" },
+  { id: 31, category: "momos", name: "Paneer Fried Momos", price: 120, veg: true, desc: "Paneer stuffed fried momos", image: "" },
+  { id: 32, category: "momos", name: "Pizza Style Momos", price: 150, veg: true, popular: true, desc: "Pizza flavoured momos", image: "" },
+  { id: 33, category: "sandwiches", name: "Plain Cheese Sandwich", price: 60, veg: true, desc: "Classic cheese sandwich", image: "" },
+  { id: 34, category: "sandwiches", name: "Aloo Masala Sandwich", price: 60, veg: true, desc: "Spicy potato sandwich", image: "" },
+  { id: 35, category: "sandwiches", name: "Veg Cheese Sandwich", price: 65, veg: true, desc: "Loaded veg cheese sandwich", image: "" },
+  { id: 36, category: "sandwiches", name: "Veg Schezwan Sandwich", price: 65, veg: true, desc: "Schezwan spicy sandwich", image: "" },
+  { id: 37, category: "sandwiches", name: "Bombay Sandwich", price: 70, veg: true, popular: true, desc: "Mumbai style sandwich", image: "" },
+  { id: 38, category: "sandwiches", name: "Cheese Corn Sandwich", price: 70, veg: true, desc: "Corn & cheese delight", image: "" },
+  { id: 39, category: "sandwiches", name: "Schezwan Cheese Corn", price: 75, veg: true, desc: "Schezwan corn sandwich", image: "" },
+  { id: 40, category: "sandwiches", name: "Paneer Cheese Sandwich", price: 80, veg: true, desc: "Rich paneer cheese sandwich", image: "" },
+  { id: 41, category: "sandwiches", name: "Paneer Makhni Sandwich", price: 90, veg: true, desc: "Makhni paneer sandwich", image: "" },
+  { id: 42, category: "sandwiches", name: "Tandoori Paneer Sandwich", price: 90, veg: true, popular: true, desc: "Tandoori spiced paneer sandwich", image: "" },
+  { id: 43, category: "sandwiches", name: "Chicken Cheese Sandwich", price: 100, veg: false, desc: "Loaded chicken cheese sandwich", image: "" },
+  { id: 44, category: "sandwiches", name: "Chicken Schezwan Sandwich", price: 100, veg: false, desc: "Spicy schezwan chicken sandwich", image: "" },
+  { id: 45, category: "sandwiches", name: "Tandoori Chicken Sandwich", price: 110, veg: false, desc: "Tandoori chicken sandwich", image: "" },
+  { id: 46, category: "sandwiches", name: "Chicken Makhni Sandwich", price: 120, veg: false, desc: "Makhni chicken sandwich", image: "" },
+  { id: 47, category: "double_decker", name: "Veg Cheese Sandwich (DD)", price: 100, veg: true, desc: "Double decker veg cheese", image: "" },
+  { id: 48, category: "double_decker", name: "Cheese Corn Paneer Sandwich", price: 110, veg: true, desc: "Triple loaded double decker", image: "" },
+  { id: 49, category: "double_decker", name: "Paneer Cheese Sandwich (DD)", price: 120, veg: true, desc: "Double decker paneer cheese", image: "" },
+  { id: 50, category: "double_decker", name: "Tandoori Paneer Sandwich (DD)", price: 130, veg: true, popular: true, desc: "Double decker tandoori paneer", image: "" },
+  { id: 51, category: "double_decker", name: "Paneer Makhni Sandwich (DD)", price: 130, veg: true, desc: "Makhni double decker", image: "" },
+  { id: 52, category: "double_decker", name: "Chicken Cheese Sandwich (DD)", price: 150, veg: false, desc: "Chicken cheese double decker", image: "" },
+  { id: 53, category: "double_decker", name: "Chiken Tandoori Sandwich (DD)", price: 150, veg: false, desc: "Tandoori chicken double decker", image: "" },
+  { id: 54, category: "double_decker", name: "Egg Chiken Cheese Sandwich", price: 160, veg: false, desc: "Egg chicken cheese double decker", image: "" },
+  { id: 55, category: "pasta", name: "Red Sauce Pasta", price: 120, veg: true, desc: "Classic tomato red sauce pasta", image: "" },
+  { id: 56, category: "pasta", name: "White Sauce Pasta", price: 130, veg: true, popular: true, desc: "Creamy white sauce pasta", image: "" },
+  { id: 57, category: "pasta", name: "Pink Sauce Pasta", price: 140, veg: true, desc: "Mixed pink sauce pasta", image: "" },
+  { id: 58, category: "pasta", name: "Chicken Red Sauce Pasta", price: 140, veg: false, desc: "Chicken in red sauce pasta", image: "" },
+  { id: 59, category: "pasta", name: "Chicken White Sauce Pasta", price: 150, veg: false, desc: "Chicken creamy pasta", image: "" },
+  { id: 60, category: "hotdog", name: "Chicken Cheese Hot Dog", price: 150, veg: false, popular: true, desc: "Loaded chicken cheese hot dog", image: "" },
+  { id: 61, category: "hotdog", name: "Spicy Chicken Hot Dog", price: 160, veg: false, desc: "Spicy grilled chicken hot dog", image: "" },
+  { id: 62, category: "paratha", name: "Aloo Paratha", price: 60, veg: true, desc: "Classic stuffed aloo paratha", image: "" },
+  { id: 63, category: "paratha", name: "Paneer Paratha", price: 80, veg: true, desc: "Stuffed paneer paratha", image: "" },
+  { id: 64, category: "paratha", name: "Cheese Paratha", price: 80, veg: true, popular: true, desc: "Cheesy paratha", image: "" },
+  { id: 65, category: "veg_burger", name: "Aloo Tikki Burger", price: 60, veg: true, desc: "Crispy aloo tikki burger", image: "" },
+  { id: 66, category: "veg_burger", name: "Herb and Chilli Burger", price: 65, veg: true, desc: "Herb chilli veg burger", image: "" },
+  { id: 67, category: "veg_burger", name: "Hot and Spicy Burger", price: 65, veg: true, popular: true, desc: "Fiery spicy veg burger", image: "" },
+  { id: 68, category: "veg_burger", name: "Double Patty Burger", price: 90, veg: true, desc: "Double veg patty burger", image: "" },
+  { id: 69, category: "veg_burger", name: "Zinger Paneer Burger", price: 110, veg: true, popular: true, desc: "Zinger style paneer burger", image: "" },
+  { id: 70, category: "non_veg_burger", name: "Chicken Burger", price: 80, veg: false, popular: true, desc: "Classic chicken burger", image: "" },
+  { id: 71, category: "non_veg_burger", name: "Chicken Egg Burger", price: 90, veg: false, desc: "Chicken egg layered burger", image: "" },
+  { id: 72, category: "non_veg_burger", name: "Chicken Double Patty Burger", price: 110, veg: false, desc: "Double chicken patty burger", image: "" },
+  { id: 73, category: "non_veg_burger", name: "Zinger Chicken Burger", price: 120, veg: false, popular: true, desc: "Zinger crispy chicken burger", image: "" },
+  { id: 74, category: "pizza", name: "Marguerite Pizza", price: 90, veg: true, desc: "Classic margherita pizza", image: "" },
+  { id: 75, category: "pizza", name: "Onion Capsicum Pizza", price: 100, veg: true, desc: "Onion capsicum pizza", image: "" },
+  { id: 76, category: "pizza", name: "Tomato Onion Pizza", price: 100, veg: true, desc: "Tomato onion pizza", image: "" },
+  { id: 77, category: "pizza", name: "Cheese Corn Pizza", price: 110, veg: true, popular: true, desc: "Loaded cheese corn pizza", image: "" },
+  { id: 78, category: "pizza", name: "Veggie Overload Pizza", price: 110, veg: true, desc: "Loaded veggie pizza", image: "" },
+  { id: 79, category: "pizza", name: "Tandoori Paneer Pizza", price: 130, veg: true, popular: true, desc: "Tandoori paneer pizza", image: "" },
+  { id: 80, category: "pizza", name: "Paneer Makhni Pizza", price: 130, veg: true, desc: "Makhni paneer pizza", image: "" },
+  { id: 81, category: "pizza", name: "Paneer Overloaded Pizza", price: 140, veg: true, desc: "Overloaded paneer pizza", image: "" },
+  { id: 82, category: "pizza", name: "Chicken Pizza", price: 150, veg: false, popular: true, desc: "Classic chicken pizza", image: "" },
+  { id: 83, category: "eggs", name: "Half Fry", price: 50, veg: false, desc: "Classic half fried egg", image: "" },
+  { id: 84, category: "eggs", name: "Omlet", price: 50, veg: false, desc: "Plain omelette", image: "" },
+  { id: 85, category: "eggs", name: "Butter Cheese Omlet", price: 70, veg: false, desc: "Buttery cheese omelette", image: "" },
+  { id: 86, category: "eggs", name: "Fluffy Omlet", price: 80, veg: false, desc: "Fluffy whipped omelette", image: "" },
+  { id: 87, category: "eggs", name: "Bhurji Bread", price: 80, veg: false, desc: "Egg bhurji with bread", image: "" },
+  { id: 88, category: "protein", name: "Paneer Veggies Protein Salad", price: 150, veg: true, popular: true, desc: "High protein paneer veggie salad", image: "" },
+  { id: 89, category: "protein", name: "Chicken Veggies Protein Salad", price: 160, veg: false, desc: "Chicken protein salad bowl", image: "" },
+  { id: 90, category: "nuggets", name: "Veg Nuggets", price: 50, veg: true, desc: "Crispy veg nuggets", image: "" },
+  { id: 91, category: "nuggets", name: "Cheese Nuggets", price: 70, veg: true, popular: true, desc: "Loaded cheese nuggets", image: "" },
+  { id: 92, category: "nuggets", name: "Chicken Nuggets", price: 90, veg: false, desc: "Classic chicken nuggets", image: "" },
+  { id: 93, category: "fries", name: "Plain Fries", price: 60, veg: true, desc: "Crispy plain fries", image: "" },
+  { id: 94, category: "fries", name: "Peri Peri Fries", price: 70, veg: true, popular: true, desc: "Spicy peri peri fries", image: "" },
+  { id: 95, category: "fries", name: "Cheese Fries", price: 90, veg: true, popular: true, desc: "Cheesy loaded fries", image: "" },
+  { id: 96, category: "veg_rolls", name: "Paneer Roll", price: 90, veg: true, desc: "Classic paneer roll", image: "" },
+  { id: 97, category: "veg_rolls", name: "Paneer Makhni Roll", price: 100, veg: true, popular: true, desc: "Makhni paneer roll", image: "" },
+  { id: 98, category: "veg_rolls", name: "Tandoori Paneer Roll", price: 100, veg: true, desc: "Tandoori paneer roll", image: "" },
+  { id: 99, category: "veg_rolls", name: "Paneer Cheese Roll", price: 100, veg: true, desc: "Cheese stuffed paneer roll", image: "" },
+  { id: 100, category: "veg_rolls", name: "Paneer Schezwan Roll", price: 100, veg: true, desc: "Schezwan paneer roll", image: "" },
+  { id: 101, category: "veg_rolls", name: "Veg Roll", price: 60, veg: true, desc: "Simple veg roll", image: "" },
+  { id: 102, category: "veg_rolls", name: "Veg Cheese Roll", price: 70, veg: true, desc: "Veg with cheese roll", image: "" },
+  { id: 103, category: "veg_rolls", name: "Veg Schezwan Roll", price: 70, veg: true, desc: "Schezwan veg roll", image: "" },
+  { id: 104, category: "non_veg_rolls", name: "Chicken Cheese Roll", price: 120, veg: false, popular: true, desc: "Loaded chicken cheese roll", image: "" },
+  { id: 105, category: "non_veg_rolls", name: "Tandoori Chicken Roll", price: 120, veg: false, desc: "Tandoori chicken roll", image: "" },
+  { id: 106, category: "non_veg_rolls", name: "Chicken Makhni Roll", price: 130, veg: false, desc: "Makhni chicken roll", image: "" },
+  { id: 107, category: "non_veg_rolls", name: "Butter Chicken Roll", price: 130, veg: false, desc: "Butter chicken roll", image: "" },
+  { id: 108, category: "non_veg_rolls", name: "Egg Roll", price: 60, veg: false, desc: "Classic egg roll", image: "" },
+  { id: 109, category: "non_veg_rolls", name: "Egg Cheese Roll", price: 70, veg: false, desc: "Egg cheese roll", image: "" },
+  { id: 110, category: "non_veg_rolls", name: "Egg Schezwan Roll", price: 80, veg: false, desc: "Schezwan egg roll", image: "" },
 ];
 
 const COUPONS = [
@@ -148,7 +148,6 @@ const COUPONS = [
 
 const ORDER_TYPES = ["Dine-in", "Pickup", "Delivery"];
 
-// FIXED: Admin credentials hidden - only checked server-side style (not shown in UI)
 const ADMIN_EMAIL = "admin@medicosinn.com";
 const ADMIN_PASS = "Admin@123";
 const STAFF_EMAIL = "staff@medicosinn.com";
@@ -175,7 +174,7 @@ const S = {
   sectionSub: { fontSize: 13, color: "#888", margin: "0 0 18px" },
   card: { background: "#161616", border: "1px solid #2a2a2a", borderRadius: 16, overflow: "hidden" },
   menuCard: { background: "#161616", border: "1px solid #2a2a2a", borderRadius: 14, overflow: "hidden" },
-  menuCardImg: { width: "100%", height: 110, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 44, background: "linear-gradient(135deg, #1a1a1a, #2a0000)" },
+  menuCardImg: { width: "100%", height: 110, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 44, background: "linear-gradient(135deg, #1a1a1a, #2a0000)", overflow: "hidden" },
   menuCardBody: { padding: 11 },
   menuCardName: { fontSize: 12, fontWeight: 700, color: "#f5f5f5", margin: "0 0 3px" },
   menuCardDesc: { fontSize: 11, color: "#888", margin: "0 0 9px" },
@@ -222,7 +221,6 @@ const S = {
   overlay: { position: "fixed", inset: 0, background: "rgba(0,0,0,0.75)", zIndex: 150, display: "flex", alignItems: "center", justifyContent: "center", padding: 16 },
   modal: { background: "#161616", border: "1px solid #2a2a2a", borderRadius: 18, padding: 24, width: "100%", maxWidth: 420 },
   toast: { position: "fixed", bottom: 90, left: "50%", transform: "translateX(-50%)", background: "#1a1a1a", border: "1px solid #2a2a2a", color: "#f5f5f5", padding: "10px 20px", borderRadius: 10, zIndex: 999, fontSize: 13, fontWeight: 600, boxShadow: "0 8px 32px rgba(0,0,0,0.5)", whiteSpace: "nowrap" },
-  // FIX: Floating cart button at bottom
   floatingCart: { position: "fixed", bottom: 20, left: "50%", transform: "translateX(-50%)", background: "#e63946", color: "#fff", border: "none", borderRadius: 50, padding: "14px 28px", fontSize: 15, fontWeight: 800, cursor: "pointer", zIndex: 120, boxShadow: "0 4px 20px rgba(230,57,70,0.5)", fontFamily: "inherit", display: "flex", alignItems: "center", gap: 10, whiteSpace: "nowrap" },
 };
 
@@ -260,7 +258,12 @@ function MenuItemCard({ item, cartQty, onAdd, onRemove, user, onNeedLogin }) {
   }
   return (
     <div style={S.menuCard}>
-      <div style={S.menuCardImg}>{emoji}</div>
+      <div style={S.menuCardImg}>
+        {item.image
+          ? <img src={item.image} alt={item.name} style={{ width: "100%", height: "100%", objectFit: "cover" }} onError={e => { e.target.style.display = "none"; e.target.nextSibling.style.display = "flex"; }} />
+          : null}
+        <span style={{ display: item.image ? "none" : "flex", fontSize: 44, alignItems: "center", justifyContent: "center", width: "100%", height: "100%" }}>{emoji}</span>
+      </div>
       <div style={S.menuCardBody}>
         <div style={{ display: "flex", alignItems: "center", marginBottom: 4 }}>
           <VegDot veg={item.veg} />
@@ -472,7 +475,6 @@ function AuthModal({ onClose, onLogin }) {
   );
 }
 
-// FIXED: Admin login - no password shown in UI
 function AdminLogin({ onLogin }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -512,6 +514,7 @@ function AdminDashboard({ user, onLogout }) {
   const [editItem, setEditItem] = useState(null);
   const [newItem, setNewItem] = useState(null);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [imgPreview, setImgPreview] = useState("");
 
   useEffect(() => {
     loadOrders(); loadCustomers();
@@ -545,13 +548,40 @@ function AdminDashboard({ user, onLogout }) {
     { id: "customers", label: "Customers", icon: "👥" },
   ];
 
+  // Image URL preview box
+  function ImagePreviewInput({ value, onChange }) {
+    return (
+      <div style={{ marginBottom: 9 }}>
+        <input
+          style={S.input}
+          placeholder="🖼 Image URL (https://...)"
+          value={value}
+          onChange={e => onChange(e.target.value)}
+        />
+        {value ? (
+          <div style={{ marginTop: 7, borderRadius: 9, overflow: "hidden", height: 90, background: "#1a1a1a", border: "1px solid #2a2a2a", display: "flex", alignItems: "center", justifyContent: "center" }}>
+            <img
+              src={value}
+              alt="preview"
+              style={{ height: "100%", width: "100%", objectFit: "cover" }}
+              onError={e => { e.target.style.display = "none"; }}
+            />
+          </div>
+        ) : (
+          <div style={{ marginTop: 7, borderRadius: 9, height: 60, background: "#1a1a1a", border: "1px dashed #2a2a2a", display: "flex", alignItems: "center", justifyContent: "center", color: "#444", fontSize: 12 }}>
+            Image preview yahan dikhegi
+          </div>
+        )}
+      </div>
+    );
+  }
+
   return (
     <div style={{ ...S.app, display: "flex", flexDirection: "column" }}>
       {toast && <Toast msg={toast} onDone={() => setToast(null)} />}
       <div style={{ background: "#111", borderBottom: "1px solid #2a2a2a", padding: "0 14px", display: "flex", alignItems: "center", justifyContent: "space-between", height: 52, flexShrink: 0 }}>
         <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-          {/* Mobile hamburger */}
-          <button style={{ background: "none", border: "none", color: "#ccc", fontSize: 20, cursor: "pointer", display: "block" }} onClick={() => setMenuOpen(!menuOpen)}>☰</button>
+          <button style={{ background: "none", border: "none", color: "#ccc", fontSize: 20, cursor: "pointer" }} onClick={() => setMenuOpen(!menuOpen)}>☰</button>
           <div style={{ fontSize: 14, fontWeight: 800, color: "#e63946" }}>MEDICOS INN — Admin</div>
         </div>
         <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
@@ -560,16 +590,16 @@ function AdminDashboard({ user, onLogout }) {
         </div>
       </div>
       <div style={{ ...S.adminLayout, position: "relative" }}>
-        {/* Sidebar - hidden on mobile unless menuOpen */}
-        <div style={{ ...S.sidebar, display: menuOpen ? "block" : "none", position: "absolute", zIndex: 50, height: "100%", left: 0, top: 0 }}>
-          {sideItems.map(s => (
-            <div key={s.id} style={{ ...S.sidebarItem, ...(page === s.id ? S.sidebarItemActive : {}) }} onClick={() => { setPage(s.id); setMenuOpen(false); }}>
-              <span>{s.icon}</span>{s.label}
-            </div>
-          ))}
-        </div>
-        {/* Desktop sidebar */}
-        <div style={{ ...S.sidebar, display: "block", position: "relative" }} className="desktop-sidebar">
+        {menuOpen && (
+          <div style={{ ...S.sidebar, position: "absolute", zIndex: 50, height: "100%", left: 0, top: 0 }}>
+            {sideItems.map(s => (
+              <div key={s.id} style={{ ...S.sidebarItem, ...(page === s.id ? S.sidebarItemActive : {}) }} onClick={() => { setPage(s.id); setMenuOpen(false); }}>
+                <span>{s.icon}</span>{s.label}
+              </div>
+            ))}
+          </div>
+        )}
+        <div style={{ ...S.sidebar, position: "relative" }}>
           {sideItems.map(s => (
             <div key={s.id} style={{ ...S.sidebarItem, ...(page === s.id ? S.sidebarItemActive : {}) }} onClick={() => setPage(s.id)}>
               <span>{s.icon}</span>{s.label}
@@ -577,6 +607,7 @@ function AdminDashboard({ user, onLogout }) {
           ))}
         </div>
         <div style={S.mainArea}>
+
           {page === "dashboard" && <>
             <div style={{ fontSize: 17, fontWeight: 800, marginBottom: 16 }}>Dashboard</div>
             <div style={{ ...S.grid4, marginBottom: 22 }}>
@@ -658,8 +689,9 @@ function AdminDashboard({ user, onLogout }) {
           {page === "menu" && <>
             <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 16 }}>
               <div style={{ fontSize: 17, fontWeight: 800 }}>Menu Management</div>
-              <button style={{ ...S.btnPrimary, width: "auto", padding: "8px 14px", fontSize: 12 }} onClick={() => setNewItem({ name: "", price: "", category: "beverages", veg: true, desc: "", popular: false })}>+ Add Item</button>
+              <button style={{ ...S.btnPrimary, width: "auto", padding: "8px 14px", fontSize: 12 }} onClick={() => setNewItem({ name: "", price: "", category: "beverages", veg: true, desc: "", popular: false, image: "" })}>+ Add Item</button>
             </div>
+
             {newItem && (
               <div style={{ background: "#161616", border: "1px solid #2a2a2a", borderRadius: 12, padding: 16, marginBottom: 16 }}>
                 <div style={{ fontSize: 13, fontWeight: 700, marginBottom: 12, color: "#e63946" }}>Add New Item</div>
@@ -677,6 +709,8 @@ function AdminDashboard({ user, onLogout }) {
                   </select>
                 </div>
                 <input style={{ ...S.input, marginBottom: 9 }} placeholder="Description" value={newItem.desc} onChange={e => setNewItem({ ...newItem, desc: e.target.value })} />
+                {/* IMAGE URL INPUT WITH PREVIEW */}
+                <ImagePreviewInput value={newItem.image} onChange={v => setNewItem({ ...newItem, image: v })} />
                 <div style={{ display: "flex", gap: 7 }}>
                   <button style={{ ...S.btnPrimary, width: "auto", padding: "8px 16px", fontSize: 13 }} onClick={() => {
                     if (!newItem.name || !newItem.price) { alert("Name & price zaroori hai"); return; }
@@ -687,6 +721,7 @@ function AdminDashboard({ user, onLogout }) {
                 </div>
               </div>
             )}
+
             {editItem && (
               <div style={{ background: "#161616", border: "1px solid #2a2a2a", borderRadius: 12, padding: 16, marginBottom: 16 }}>
                 <div style={{ fontSize: 13, fontWeight: 700, marginBottom: 12, color: "#e63946" }}>Edit: {editItem.name}</div>
@@ -695,19 +730,27 @@ function AdminDashboard({ user, onLogout }) {
                   <input style={S.input} type="number" value={editItem.price} onChange={e => setEditItem({ ...editItem, price: +e.target.value })} />
                 </div>
                 <input style={{ ...S.input, marginBottom: 9 }} value={editItem.desc} onChange={e => setEditItem({ ...editItem, desc: e.target.value })} />
+                {/* IMAGE URL INPUT WITH PREVIEW */}
+                <ImagePreviewInput value={editItem.image || ""} onChange={v => setEditItem({ ...editItem, image: v })} />
                 <div style={{ display: "flex", gap: 7 }}>
                   <button style={{ ...S.btnPrimary, width: "auto", padding: "8px 16px", fontSize: 13 }} onClick={() => { setMenuItems(menuItems.map(x => x.id === editItem.id ? editItem : x)); setEditItem(null); setToast("Updated!"); }}>Update</button>
                   <button style={S.btnSecondary} onClick={() => setEditItem(null)}>Cancel</button>
                 </div>
               </div>
             )}
+
             <div style={{ overflowX: "auto" }}>
               <div style={{ background: "#161616", border: "1px solid #2a2a2a", borderRadius: 12, overflow: "hidden", minWidth: 420 }}>
                 <table style={S.table}>
-                  <thead><tr><th style={S.th}>Name</th><th style={S.th}>Category</th><th style={S.th}>Price</th><th style={S.th}>Type</th><th style={S.th}>Actions</th></tr></thead>
+                  <thead><tr><th style={S.th}>Img</th><th style={S.th}>Name</th><th style={S.th}>Category</th><th style={S.th}>Price</th><th style={S.th}>Type</th><th style={S.th}>Actions</th></tr></thead>
                   <tbody>
                     {menuItems.map(item => (
                       <tr key={item.id}>
+                        <td style={S.td}>
+                          {item.image
+                            ? <img src={item.image} alt="" style={{ width: 36, height: 36, borderRadius: 7, objectFit: "cover" }} />
+                            : <span style={{ fontSize: 22 }}>{MENU_CATEGORIES.find(c => c.id === item.category)?.icon}</span>}
+                        </td>
                         <td style={S.td}><VegDot veg={item.veg} />{item.name}</td>
                         <td style={{ ...S.td, color: "#888" }}>{MENU_CATEGORIES.find(c => c.id === item.category)?.label}</td>
                         <td style={{ ...S.td, color: "#e63946", fontWeight: 700 }}>Rs.{item.price}</td>
@@ -794,7 +837,6 @@ function HomePage({ onGoMenu }) {
           </div>
         </div>
       </div>
-
       <div style={{ ...S.section, paddingBottom: 0 }}>
         <div style={S.sectionTitle}>Today's Offers 🏷</div>
         <div style={S.sectionSub}>Use these codes at checkout</div>
@@ -808,7 +850,6 @@ function HomePage({ onGoMenu }) {
           ))}
         </div>
       </div>
-
       <div style={S.section}>
         <div style={S.sectionTitle}>Most Popular 🔥</div>
         <div style={S.sectionSub}>Customer favourites</div>
@@ -817,7 +858,9 @@ function HomePage({ onGoMenu }) {
             const emoji = MENU_CATEGORIES.find(c => c.id === item.category)?.icon || "🍴";
             return (
               <div key={item.id} style={{ ...S.card, padding: 14, display: "flex", gap: 12, alignItems: "center" }}>
-                <div style={{ fontSize: 30, width: 48, height: 48, display: "flex", alignItems: "center", justifyContent: "center", background: "#1a1a1a", borderRadius: 10, flexShrink: 0 }}>{emoji}</div>
+                <div style={{ fontSize: 30, width: 48, height: 48, display: "flex", alignItems: "center", justifyContent: "center", background: "#1a1a1a", borderRadius: 10, flexShrink: 0, overflow: "hidden" }}>
+                  {item.image ? <img src={item.image} alt={item.name} style={{ width: "100%", height: "100%", objectFit: "cover" }} /> : emoji}
+                </div>
                 <div style={{ flex: 1, minWidth: 0 }}>
                   <div style={{ fontSize: 13, fontWeight: 700, marginBottom: 2 }}>{item.name}</div>
                   <div style={{ fontSize: 11, color: "#888", marginBottom: 5 }}>{item.desc}</div>
@@ -831,7 +874,6 @@ function HomePage({ onGoMenu }) {
           <button style={{ ...S.btnPrimary, width: "auto", padding: "10px 24px" }} onClick={onGoMenu}>View Full Menu →</button>
         </div>
       </div>
-
       <div style={{ background: "#111", borderTop: "1px solid #1a1a1a", padding: "22px 16px", textAlign: "center" }}>
         <div style={{ fontSize: 11, color: "#888", marginBottom: 5 }}>Accepts UPI, Cards & Cash</div>
         <div style={{ fontSize: 11, color: "#555" }}>UPI: Q057269975@ybl | 📞 9175509001 / 9922333089</div>
@@ -878,12 +920,10 @@ function MenuPage({ cart, onAdd, onRemove, user, onNeedLogin }) {
 function ProfilePage({ user }) {
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
-
   useEffect(() => {
     supabase.from("orders").select("*").eq("user_id", user.id).order("created_at", { ascending: false })
       .then(({ data }) => { if (data) setOrders(data); setLoading(false); });
   }, [user.id]);
-
   return (
     <div style={S.section}>
       <div style={S.sectionTitle}>My Profile</div>
@@ -935,7 +975,6 @@ export default function App() {
     link.rel = "stylesheet";
     link.href = "https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&display=swap";
     document.head.appendChild(link);
-    // Fix mobile viewport overflow
     document.body.style.overflowX = "hidden";
     document.body.style.margin = "0";
     document.body.style.padding = "0";
@@ -998,7 +1037,6 @@ export default function App() {
       {toast && <Toast msg={toast} onDone={() => setToast(null)} />}
       {showAuth && <AuthModal onClose={() => setShowAuth(false)} onLogin={u => { setUser(u); setToast(`Welcome, ${u.name}! 👋`); }} />}
       {trackOrder && <OrderTracking order={trackOrder} onClose={() => setTrackOrder(null)} />}
-
       <nav style={S.nav}>
         <div style={S.logo} onClick={() => setPage("home")}>
           <div style={{ width: 28, height: 28, borderRadius: 8, background: "#e63946", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 14 }}>🍽</div>
@@ -1018,17 +1056,14 @@ export default function App() {
               </>
             : <button style={S.navBtn} onClick={() => setShowAuth(true)}>Login</button>
           }
-          {/* FIXED: Admin button hidden - small & subtle */}
           <button style={{ background: "none", border: "none", color: "#2a2a2a", fontSize: 10, cursor: "pointer", padding: "4px 6px" }} onClick={() => setAdminMode(true)}>•••</button>
           <button style={S.cartBtn} onClick={() => setCartOpen(true)}>
             🛒 {cartCount > 0 && <span style={{ background: "#fff", color: "#e63946", borderRadius: "50%", width: 17, height: 17, display: "inline-flex", alignItems: "center", justifyContent: "center", fontSize: 10, fontWeight: 900 }}>{cartCount}</span>}
           </button>
         </div>
       </nav>
-
       {cartOpen && <div style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.5)", zIndex: 150 }} onClick={() => setCartOpen(false)} />}
       {cartOpen && <CartSidebar cart={cart} onClose={() => setCartOpen(false)} onAdd={addToCart} onRemove={removeFromCart} onPlaceOrder={placeOrder} user={user} />}
-
       {page === "home" && <HomePage onGoMenu={() => setPage("menu")} />}
       {page === "menu" && <MenuPage cart={cart} onAdd={addToCart} onRemove={removeFromCart} user={user} onNeedLogin={handleNeedLogin} />}
       {page === "profile" && user && <ProfilePage user={user} />}
@@ -1038,14 +1073,11 @@ export default function App() {
           <button style={{ ...S.btnPrimary, width: "auto", padding: "10px 24px" }} onClick={() => setShowAuth(true)}>Login / Sign Up</button>
         </div>
       )}
-
-      {/* FIX: Floating View Cart button when items in cart */}
       {cartCount > 0 && !cartOpen && (
         <button style={S.floatingCart} onClick={() => setCartOpen(true)}>
           🛒 View Cart ({cartCount} items) — Rs.{cart.reduce((s, i) => s + i.price * i.qty, 0)}
         </button>
       )}
-
       <footer style={{ background: "#0a0a0a", borderTop: "1px solid #1a1a1a", padding: "22px 16px", textAlign: "center", paddingBottom: cartCount > 0 ? 80 : 22 }}>
         <div style={{ fontSize: 15, fontWeight: 800, color: "#e63946", marginBottom: 3 }}>MEDICOS INN</div>
         <div style={{ fontSize: 11, color: "#555", marginBottom: 5 }}>Premium Café • Pune, Maharashtra</div>
